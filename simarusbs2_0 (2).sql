@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2019 at 06:58 AM
+-- Generation Time: Mar 18, 2019 at 07:12 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -167,6 +167,13 @@ CREATE TABLE `lampiransuratkeluar` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lampiransuratkeluar`
+--
+
+INSERT INTO `lampiransuratkeluar` (`id`, `path`, `pathUri`, `namaFile`, `idSuratKeluar`, `created_at`, `updated_at`) VALUES
+(16, 'lampiransuratkeluar/4cquATliF0Nnzbn1hpG20jFA18YHoyd9wNC5XGKw.pdf', 'uratkeluar/4cquATliF0Nnzbn1hpG20jFA18YHoyd9wNC5XGKw.pdf', 'SURAT IJIN', 82, '2019-03-18 02:18:47', '2019-03-18 02:18:47');
 
 -- --------------------------------------------------------
 
@@ -335,18 +342,6 @@ INSERT INTO `lokasi` (`id`, `lokasi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lokasibarangkeluar`
---
-
-CREATE TABLE `lokasibarangkeluar` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `idLokasi` int(10) UNSIGNED NOT NULL,
-  `idSuratKeluar` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `lokasikerja`
 --
 
@@ -430,6 +425,20 @@ INSERT INTO `lokasikerja` (`id`, `idPekerjaan`, `idLokasi`, `created_at`, `updat
 (99, 52, 3, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (100, 53, 1, '2019-03-04 02:39:51', '2019-03-04 02:39:51'),
 (101, 54, 1, '2019-03-15 01:40:48', '2019-03-15 01:40:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lokasisuratkeluar`
+--
+
+CREATE TABLE `lokasisuratkeluar` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `idLokasi` int(10) UNSIGNED NOT NULL,
+  `idSuratKeluar` int(10) UNSIGNED NOT NULL,
+  `create_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2334,6 +2343,15 @@ CREATE TABLE `suratkeluarbarang` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `suratkeluarbarang`
+--
+
+INSERT INTO `suratkeluarbarang` (`id`, `nomorSurat`, `kepada`, `nik`, `jabatan`, `perihal`, `validate`, `statusSurat`, `keterangan`, `created_at`, `updated_at`) VALUES
+(80, '12019', 'SAIFUL', '123', 'Asman', 'Surat Iijin', 0, 0, 'surat keluar barang', '2019-03-18 02:18:01', '2019-03-18 02:18:01'),
+(81, '22019', 'SAIFUL', '123', 'Asman', 'Surat Iijin', 0, 0, 'surat keluar barang', '2019-03-18 02:18:33', '2019-03-18 02:18:33'),
+(82, '32019', 'SAIFUL', '123', 'Asman', 'Surat Iijin', 0, 0, 'surat keluar barang', '2019-03-18 02:18:47', '2019-03-18 02:18:47');
+
 -- --------------------------------------------------------
 
 --
@@ -2544,7 +2562,7 @@ INSERT INTO `user` (`id`, `nik`, `nama`, `username`, `password`, `kontak`, `role
 (1, '401519', 'Sigit Widagdo', 'adminsbs', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'admin', 1, 1, '5mQiWByM3de1fPMnQROiqrDh7cBf7HxWGsocrgWWRgvl1bmNtlo3Ye1kwZZy', NULL, NULL),
 (2, '-', 'GM WITEL', 'gmwitel', '$2y$10$mZK0j/lhiSs9HRbZ2BMXru3wCKQQe/fVbqlEON3.7wgJxEDYLccha', '-', 'gm', 1, 1, 'Xn7gvncCs8DCJPmnY6KL1d7PCn2a6n0XE5JKWT8bhGvB5zWSntpye3PbI0Ei', NULL, '2017-09-13 05:14:07'),
 (3, '-', 'MGR SAS', 'mgrsas', '$2y$10$kGgkq/5i5EBBoRGP3Vuow.fuozKkSgYx7IRiqA71mWlZnT9MxUTOS', '-', 'sas', 1, 1, 'cgix6tLwNlvjvSWNKv24KY4zYkXa2ScuI1lmOonPuNL7bViMr3ohtQrqTVcZ', NULL, '2017-09-13 05:12:58'),
-(4, '870022', 'Havea Pertiwi', '870022', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'validator', 1, 1, 'qYHcH3Kkw01wS2sRhabRrs63fqWW1PLJUcGIYQKSk0IDmUu0DyOhnwZcgHJq', NULL, NULL),
+(4, '870022', 'Havea Pertiwi', '870022', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'validator', 1, 1, '2dz08NLZl0fryq15kXoMibFDDtJvrXZMRx6XzsJwFnVwFZmWTPyxKTk6K3lJ', NULL, NULL),
 (5, '640986', 'Achmad Muslich', '640986', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'supervalidator', 1, 1, 'f6EM2NeSOHT1dqVkMJ1ieIgpXmw99llwJR9zZ4BfeHX8YTlBbeWyuStUoOos', NULL, NULL),
 (6, '20000', 'RKTTES', 'RKTTES', '$2y$10$V3UBVvHxf7kxYO3kS0fEMujW8oBrupW4FNjrnTgYrmSjjM.GoQmR2', '-', 'security', 1, 2, 'MuM88exTwQFxbNvHzFVLUNYnXLxNbzFm0qwv7Jv4AWjKWX4LQLnsvCvgiWQs', '2018-11-23 01:36:14', '2018-11-23 01:55:23'),
 (7, '20001', 'FERDIYANTO', 'Frediyanto', '$2y$10$6TNdy3dUGI51C1nxoKFs2ONkNNkl0tGMEtiW/0tqrN8GCqBQbaQX.', '082132398752', 'security', 1, 2, 'Gj2xjt3F7nm0GUAcSXna1NpdW9xPq98rh9qUlsQ3dqStOLHR26yKHLfk3cWT', '2018-11-23 01:37:16', '2018-11-23 01:55:26'),
@@ -2618,7 +2636,7 @@ INSERT INTO `user` (`id`, `nik`, `nama`, `username`, `password`, `kontak`, `role
 (75, '631064', 'TOFAN HIDAYAT', '631064', '$2y$10$IzzHRlf7SvWujuPEian9yuKsbWTJyNXqjxuYGJHp1LHgjuQbhlB9K', '0851-0099-6635', 'picTelkom', 1, 1, 'yrFMg6ptBH4BKmaF7CeKB6LODEbRbcGsQDfZNXLs1USCcHoEfTXdRPV2L3gs', '2019-01-14 03:46:55', '2019-01-14 03:47:14'),
 (76, '630126', 'SUDIRO', '630126', '$2y$10$S1KxYq6ODzDTrPtZV17Cmet1MhHNnFqog.FlmonLe8jJWiqPx6JRW', '0851-0591-3476', 'picTelkom', 1, 1, NULL, '2019-01-15 04:43:34', '2019-01-15 04:44:04'),
 (77, '31007', 'ARIS JIMAN SAPUTRO', 'aris19', '$2y$10$AnbnshO7QANlxqlaohu4mOODa5twzSoGXgEaFAonCs/f5xc6GfahW', '0851-0600-1919', 'security', 1, 4, 'FlBWa21xX834ErdTAM1EQCgG7IUlEJRRQX87lD0pSyxfLeg5HP0bjX1we7U6', '2019-01-24 02:11:33', '2019-01-24 02:11:58'),
-(78, '920268', 'Natanael Pandapotan', '920268', '$2y$10$qK2IocMATNkyBEjhmJSS2uhijs1mHj5sTkmXfl5tGiO8/s/MKrDUG', '081310108341', 'picTelkom', 1, 1, 'EbiIvLiZcKog7eMMwQXQb7O6Z6iYgyG7sp7ThGQnc07xXiykVphU1fekzgh9', '2019-02-18 03:24:12', '2019-03-13 02:31:17');
+(78, '920268', 'Natanael Pandapotan', '920268', '$2y$10$qK2IocMATNkyBEjhmJSS2uhijs1mHj5sTkmXfl5tGiO8/s/MKrDUG', '081310108341', 'picTelkom', 1, 1, 'sCiZwc2cvQxLoKUJL3F0wr3FCcjt2vJmUgxc584hbBYsUhFF0OGyNM7RFOjq', '2019-02-18 03:24:12', '2019-03-13 02:31:17');
 
 -- --------------------------------------------------------
 
@@ -2745,18 +2763,20 @@ ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `lokasibarangkeluar`
---
-ALTER TABLE `lokasibarangkeluar`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `lokasikerja`
 --
 ALTER TABLE `lokasikerja`
   ADD PRIMARY KEY (`id`),
   ADD KEY `lokasikerja_idpekerjaan_foreign` (`idPekerjaan`),
   ADD KEY `lokasikerja_idlokasi_foreign` (`idLokasi`);
+
+--
+-- Indexes for table `lokasisuratkeluar`
+--
+ALTER TABLE `lokasisuratkeluar`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idLokasi_foreign` (`idLokasi`),
+  ADD KEY `idSuratKeluar_foreign` (`idSuratKeluar`);
 
 --
 -- Indexes for table `migrations`
@@ -2874,7 +2894,7 @@ ALTER TABLE `lampiran`
 -- AUTO_INCREMENT for table `lampiransuratkeluar`
 --
 ALTER TABLE `lampiransuratkeluar`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `logmasuk`
 --
@@ -2886,15 +2906,15 @@ ALTER TABLE `logmasuk`
 ALTER TABLE `lokasi`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- AUTO_INCREMENT for table `lokasibarangkeluar`
---
-ALTER TABLE `lokasibarangkeluar`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `lokasikerja`
 --
 ALTER TABLE `lokasikerja`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+--
+-- AUTO_INCREMENT for table `lokasisuratkeluar`
+--
+ALTER TABLE `lokasisuratkeluar`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -2939,7 +2959,7 @@ ALTER TABLE `pictelkom`
 -- AUTO_INCREMENT for table `suratkeluarbarang`
 --
 ALTER TABLE `suratkeluarbarang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 --
 -- AUTO_INCREMENT for table `suratmasuk`
 --
@@ -2999,6 +3019,13 @@ ALTER TABLE `logmasuk`
 ALTER TABLE `lokasikerja`
   ADD CONSTRAINT `lokasikerja_idlokasi_foreign` FOREIGN KEY (`idLokasi`) REFERENCES `lokasi` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `lokasikerja_idpekerjaan_foreign` FOREIGN KEY (`idPekerjaan`) REFERENCES `pekerjaan` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `lokasisuratkeluar`
+--
+ALTER TABLE `lokasisuratkeluar`
+  ADD CONSTRAINT `idLokasi_foreign` FOREIGN KEY (`idLokasi`) REFERENCES `lokasi` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `idSuratKeluar_foreign` FOREIGN KEY (`idSuratKeluar`) REFERENCES `suratkeluarbarang` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `nda`
