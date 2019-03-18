@@ -16,8 +16,8 @@ class Lokasi extends Model
         return $this->hasMany(LokasiKerja::class, 'idLokasi','id');
     }
 
-    public function lokasiBarangKeluar(){
-        return $this->hasMany(LokasiBarangKeluar::class, 'idLokasi','id');
+    public function lokasiSuratKeluar(){
+        return $this->hasMany(LokasiSuratKeluar::class, 'idLokasi','id');
     }
 
     public function logMasuk(){

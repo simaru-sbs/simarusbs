@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LokasiBarangKeluar extends Model
+class LokasiSuratKeluar extends Model
 {
-    protected $table = 'lokasibarangkeluar';
+    protected $table = 'lokasisuratkeluar';
 
     protected $fillable = [
-        'idLokasi', 'idBarangKeluar',
+        'idLokasi', 'idSuratKeluar',
     ];
 
     public function SuratKeluar(){

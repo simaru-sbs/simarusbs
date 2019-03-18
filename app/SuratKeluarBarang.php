@@ -19,7 +19,7 @@ class SuratKeluarBarang extends Model
         'keterangan',
     ];
 
-    public function lokasiBarangKeluar()
+    public function lokasiSuratKeluar()
     {
         return $this->hasOne(LokasiSuratKeluar::class, 'idSuratkeluar', 'id');
     }

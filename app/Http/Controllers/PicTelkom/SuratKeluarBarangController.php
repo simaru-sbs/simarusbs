@@ -9,6 +9,7 @@ use App\PicTelkom;
 use App\PicMitra;
 use App\UnitPerusahaan;
 use App\Lokasi;
+use App\LokasiSuratKeluar;
 use App\LogSuratKeluar;
 use App\LampiranSuratKeluar;
 use Illuminate\Support\Facades\Storage;
@@ -116,7 +117,20 @@ class SuratKeluarBarangController extends Controller
                 'statusSurat' => 0,
                 'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
             ]);
+
+
+        
+
         }
+
+           foreach ($request->lokasi as $loc) {
+            LokasiSuratKeluar::create([
+                'idLokasi' => $loc,
+                'idSuratKeluar' => $surat->id,
+            ]);
+        }
+
+
 
         $path = Storage::putFile(
             'lampiransuratkeluar', $request->file('lampiransuratkeluar')
@@ -128,6 +142,10 @@ class SuratKeluarBarangController extends Controller
             'namaFile' => strtoupper($request->namaLampiran),
             'idSuratKeluar' => $surat->id
         ]);
+
+      
+
+     
 
 
         $nomorSurat = $surat->nomorSurat;

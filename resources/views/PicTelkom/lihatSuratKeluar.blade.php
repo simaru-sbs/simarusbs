@@ -40,50 +40,15 @@
                         <tr>
                             <th style="width: 10%;vertical-align: middle">Nomor Surat</th>
                             <th style="width: 10%;vertical-align: middle">Instansi</th>
-                            <th style="vertical-align: middle">Kegiatan</th>
                             <th style="vertical-align: middle">Lokasi</th>
                             <th style="vertical-align: middle">Keterangan</th>
-                            <th style="vertical-align: middle">Tanggal</th>
-                            <th style="vertical-align: middle">Waktu</th>
+                            <th style="vertical-align: middle">Tanggal <br>Pembuatan Surat</th>
+                            <th style="vertical-align: middle">Status</th>
                             <th style="width: 5%; vertical-align: middle">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($surats as $surat)
-                            <tr>
-                                <td>{{$surat->nomorSurat}}</td>
-                                <td>{{ucwords(strtolower($surat->kepada))}}</td>
-                                <td>{{$surat->pekerjaan->kegiatan}}</td>
-                                <td>
-                                    <?php
-                                    $i = 0;
-                                    $len = count($surat->pekerjaan->lokasiKerja);
-                                    ?>
-                                    @foreach($surat->pekerjaan->lokasiKerja as $loc)
-                                        @if($i == $len-1)
-                                            {{$loc->lokasi->lokasi}}.
-                                        @else
-                                            {{$loc->lokasi->lokasi}},
-                                            <?php $i++?>
-                                        @endif
-                                    @endforeach
-                                </td>
-                                <td>{{$surat->keterangan}}</td>
-                                <td>{{$surat->pekerjaan->tanggalMulai}}<br>{{$surat->pekerjaan->tanggalBerakhir}}</td>
-                                <td>{{$surat->pekerjaan->jamMasuk}}<br>{{$surat->pekerjaan->jamKeluar}}</td>
-                                <td>
-                                    <div class="col-xs-12" style="padding: 0px 0px 0px 0px">
-                                        <a href="{{route('get-picTelkomDetailSurat',['id' => $surat->id])}}">
-                                            <button type="submit"
-                                                    class="btn btn-info pull-right btn-block btn-sm"
-                                                    data-toogle="tooltip" data-placement="bottom"  title="Tampilkan Surat">
-                                                <i class="fa fa-map-pin"></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                       
                         </tbody>
                         <tfoot>
                         </tfoot>
