@@ -12,7 +12,7 @@ class LokasiSuratKeluar extends Model
         'idLokasi', 'idSuratKeluar',
     ];
 
-    public function SuratKeluar(){
+    public function suratKeluar(){
         return $this->belongsTo(SuratKeluarBarang::class, 'idSuratKeluar','id');
     }
 

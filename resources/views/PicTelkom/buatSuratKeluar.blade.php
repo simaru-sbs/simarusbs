@@ -96,21 +96,30 @@
 
                         <div class="form-group">
                             <label>Lokasi</label>
-                            <select class="form-control" name="lokasi" required>
-                            @foreach($lokasis as $lokasi)
+                            <select class="form-control chosen-select" name="lokasi[]"
+                                    style="border-radius: 10px" required>
+                                <?php $ketemu = false?>
                                 @if(old('lokasi'))
-                                    @if(old('lokasi') == $lokasi->id)
-                                        <option value="{{$lokasi->id}}" selected>{{$lokasi->lokasi}}</option>
-                                    @else
-                                        <option value="{{$lokasi->id}}">{{$lokasi->lokasi}}</option>
-                                    @endif
+                                    @foreach($lokasis as $lokasi)
+                                        @foreach(old('lokasi') as $loc)
+                                            @if($loc == $lokasi->id)
+                                                <option value="{{$lokasi->id}}" selected>{{$lokasi->lokasi}}</option>
+                                                <?php $ketemu = true?>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if(!$ketemu)
+                                            <option value="{{$lokasi->id}}">{{$lokasi->lokasi}}</option>
+                                        @endif
+                                        <?php $ketemu = false?>
+                                    @endforeach
                                 @else
-                                    <option value="{{$lokasi->id}}">{{$lokasi->lokasi}}</option>
+                                    @foreach($lokasis as $lokasi)
+                                        <option value="{{$lokasi->id}}">{{$lokasi->lokasi}}</option>
+                                    @endforeach
                                 @endif
-                            @endforeach
                             </select>
                         </div>
-                        
                         <div class="form-group">
                             <label>Keterangan Tambahan</label>
                             <input type="text"

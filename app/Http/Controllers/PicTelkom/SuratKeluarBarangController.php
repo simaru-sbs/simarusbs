@@ -119,18 +119,8 @@ class SuratKeluarBarangController extends Controller
             ]);
 
 
-        
 
         }
-
-           foreach ($request->lokasi as $loc) {
-            LokasiSuratKeluar::create([
-                'idLokasi' => $loc,
-                'idSuratKeluar' => $surat->id,
-            ]);
-        }
-
-
 
         $path = Storage::putFile(
             'lampiransuratkeluar', $request->file('lampiransuratkeluar')
@@ -142,6 +132,13 @@ class SuratKeluarBarangController extends Controller
             'namaFile' => strtoupper($request->namaLampiran),
             'idSuratKeluar' => $surat->id
         ]);
+
+            foreach ($request->lokasi as $loc) {
+            LokasiSuratKeluar::create([
+                'idLokasi' => $loc,
+                'idSuratKeluar' => $surat->id,
+            ]);
+        }
 
       
 
