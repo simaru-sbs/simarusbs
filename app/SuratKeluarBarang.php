@@ -24,6 +24,11 @@ class SuratKeluarBarang extends Model
         return $this->hasOne(LokasiSuratKeluar::class, 'idSuratkeluar', 'id');
     }
 
+     public function barangKeluar()
+    {
+        return $this->hasMany(BarangKeluar::class, 'idSuratkeluar', 'id');
+    }
+
     public function lampiranSuratKeluar(){
         return $this->hasOne(LampiranSuratKeluar::class,'idSuratkeluar', 'id');
     }

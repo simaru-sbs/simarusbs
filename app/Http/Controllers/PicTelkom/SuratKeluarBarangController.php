@@ -11,6 +11,7 @@ use App\UnitPerusahaan;
 use App\Lokasi;
 use App\LokasiSuratKeluar;
 use App\LogSuratKeluar;
+use App\BarangKeluar;
 use App\LampiranSuratKeluar;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,6 +29,28 @@ class SuratKeluarBarangController extends Controller
     {
         $surats = SuratKeluarBarang::all();
         return view('picTelkom/lihatSuratKeluar', compact('surats'));
+    }
+
+      public function detailSuratKeluar($id)
+    {
+        $surat = SuratKeluarBarang::where([
+            'id' => $id,
+        ])->get()->first();
+
+        if (!$surat) {
+            return redirect()->route('get-indexLihatSuratKeluar')
+                ->with([
+                    'status' => 'warning',
+                    'message' => 'Tidak terdapat surat dengan ID tersebut!'
+                ]);
+        }
+
+      
+
+        $tahun = substr($surat->nomorSurat, -4);
+        $angka = str_replace($tahun, '', $surat->nomorSurat);
+        return view('PicTelkom/detailSuratKeluar', compact('surat', 'angka', 'tahun', 'arrayL1', 'arrayL2', 'arrayL3'));
+
     }
 
    
@@ -140,7 +163,27 @@ class SuratKeluarBarangController extends Controller
             ]);
         }
 
-      
+       if ($request->inputNamaBarang) {
+                foreach ($request->inputNamaBarang as $index => $namaBarang) {
+                    if ($request->inputMerek[$index] && $request->SerialNumber[$index]) {
+                        $BarangKeluar = BarangKeluar::create([
+                            'idSuratKeluar' => $surat->id,
+                            'namaBarang' => $namaBarang,
+                            'merek' => $request->inputMerek[$index],
+                            'serialNumber' => $request->inputSerialNumber[$index],
+                     
+
+                        ]);
+                    } else {
+                        $BarangKeluar = BarangKeluar::create([
+                            'idSuratKeluar' => $surat->id,
+                           'namaBarang' => $namaBarang,
+                            'merek' => $request->inputMerek[$index],
+                            'serialNumber' => $request->inputSerialNumber[$index],
+                        ]);
+                    }
+                    }
+            }
 
      
 

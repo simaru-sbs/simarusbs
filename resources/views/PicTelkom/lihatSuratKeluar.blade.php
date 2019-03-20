@@ -40,7 +40,7 @@
                         <tr>
                             <th style="width: 10%;vertical-align: middle">Nomor Surat</th>
                             <th style="width: 10%;vertical-align: middle">Instansi</th>
-                            <th style="vertical-align: middle">Lokasi</th>
+                           
                             <th style="vertical-align: middle">Keterangan</th>
                             <th style="vertical-align: middle">Tanggal <br>Pembuatan Surat</th>
                             <th style="vertical-align: middle">Status</th>
@@ -48,7 +48,41 @@
                         </tr>
                         </thead>
                         <tbody>
-                       
+                               @foreach($surats as $surat)
+                            <tr>
+                                <td>{{$surat->nomorSurat}}</td>
+                                <td>{{ucwords(strtolower($surat->kepada))}}</td>
+            
+                             
+                                <td>{{$surat->keterangan}}</td>
+                                <td>{{$surat->created_at}}</td>
+                                <td>
+                                    @if($surat->statusSurat == 0)
+                                        Belum Tervalidasi.
+                                    @elseif($surat->statusSurat == 1)
+                                        Validasi Tahap 1.
+                                    @elseif($surat->statusSurat == 2)
+                                        Tervalidasi.
+                                    @elseif($surat->statusSurat == 4)
+                                        Non-Aktif.
+                                    @else
+                                   
+                                        Revisi.
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="col-xs-12" style="padding: 0px 0px 0px 0px">
+                                        <a href="{{route('get-picTelkomDetailSuratKeluar',['id' => $surat->id])}}">
+                                            <button type="submit"
+                                                    class="btn btn-info pull-right btn-block btn-sm"
+                                                    data-toogle="tooltip" data-placement="bottom"  title="Tampilkan Surat">
+                                                <i class="fa fa-map-pin"></i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         </tfoot>
