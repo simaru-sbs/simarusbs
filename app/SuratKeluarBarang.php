@@ -17,11 +17,13 @@ class SuratKeluarBarang extends Model
         'validate',
         'statusSurat',
         'keterangan',
+        'hari',
+        'tanggal',
     ];
 
     public function lokasiSuratKeluar()
     {
-        return $this->hasOne(LokasiSuratKeluar::class, 'idSuratkeluar', 'id');
+        return $this->hasMany(LokasiSuratKeluar::class, 'idSuratkeluar', 'id');
     }
 
      public function barangKeluar()

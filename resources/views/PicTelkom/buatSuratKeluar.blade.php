@@ -99,6 +99,7 @@
                             <label>Lokasi</label>
                             <select class="form-control chosen-select" name="lokasi[]"
                                     style="border-radius: 10px" required>
+                                <option value="">-Pilih Lokasi-</option> 
                                 <?php $ketemu = false?>
                                 @if(old('lokasi'))
                                     @foreach($lokasis as $lokasi)
@@ -121,6 +122,34 @@
                                 @endif
                             </select>
                         </div>
+
+
+
+                        <div class="form-group">
+                            <label>Hari</label>
+                            <select class="form-control chosen-select" name="hari"
+                                    style="border-radius: 10px" required>
+                               
+                               <option value="">-Pilih Hari-</option> 
+                                        <option value="Senin">Senin</option>
+                                         <option value="Selasa">Selasa</option>
+                                          <option value="Rabu">Rabu</option>
+                                           <option value="Kamis">Kamis</option>
+                                            <option value="Jumat">Jumat</option>
+                                             <option value="Sabtu">Sabtu</option>
+                                              <option value="Minggu">Minggu</option>
+                                
+                            </select>
+                        </div>
+
+                         <div class="form-group">
+                            <label>Tanggal</label>
+                            <input type="date" class="form-control" name="tanggal" 
+                                   required
+                                   value="{{old('tanggal')}}"
+                            >
+                        </div>
+
                         <div class="form-group">
                             <label>Keterangan Tambahan</label>
                             <input type="text"

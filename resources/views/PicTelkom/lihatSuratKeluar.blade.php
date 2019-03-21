@@ -40,9 +40,11 @@
                         <tr>
                             <th style="width: 10%;vertical-align: middle">Nomor Surat</th>
                             <th style="width: 10%;vertical-align: middle">Instansi</th>
-                           
+                            <th style="width: 10%;vertical-align: middle">Lokasi</th>
+                            <th style="width: 10%;vertical-align: middle">Hari</th>
+                           <th style="width: 10%;vertical-align: middle">Tanggal</th>
                             <th style="vertical-align: middle">Keterangan</th>
-                            <th style="vertical-align: middle">Tanggal <br>Pembuatan Surat</th>
+
                             <th style="vertical-align: middle">Status</th>
                             <th style="width: 5%; vertical-align: middle">Action</th>
                         </tr>
@@ -53,9 +55,25 @@
                                 <td>{{$surat->nomorSurat}}</td>
                                 <td>{{ucwords(strtolower($surat->kepada))}}</td>
             
-                             
+                              <td>
+                                    <?php
+                                    $i = 0;
+                                    $len = count($surat->lokasiSuratKeluar);
+                                    ?>
+                                    @foreach($surat->lokasiSuratKeluar as $loc)
+                                        @if($i == $len-1)
+                                            {{$loc->lokasi->lokasi}}.
+                                        @else
+                                            {{$loc->lokasi->lokasi}},
+                                            <?php $i++?>
+                                        @endif
+                                    @endforeach
+                                </td>
+                                       <td>{{$surat->hari}}</td>
+                                  <td>{{$surat->tanggal}}</td>
                                 <td>{{$surat->keterangan}}</td>
-                                <td>{{$surat->created_at}}</td>
+                          
+                              
                                 <td>
                                     @if($surat->statusSurat == 0)
                                         Belum Tervalidasi.

@@ -45,11 +45,63 @@ class SuratKeluarBarangController extends Controller
                 ]);
         }
 
-      
 
+
+        $arrayK1 = array();
+        $arrayK2 = array();
+        $arrayK3 = array();
+        $arrayL1 = array();
+        $arrayL2 = array();
+        $arrayL3 = array();
+
+
+        $max = $surat->barangKeluar->count();
+        $selector = 0;
+        $counter = 0;
+
+        if ($max != 0) {
+            for ($i = 0; $i < 10; $i++) {
+                for ($k = 0; $k < 3; $k++) {
+                    if ($selector == 0) {
+                        array_push($arrayK1, $surat->barangKeluar[$counter++]->SuratKeluarBarang->namaBarang);
+                        $selector++;
+                    } else if ($selector == 1) {
+                        array_push($arrayK2, $surat->barangKeluar[$counter++]->SuratKeluarBarang->namaBarang);
+                        $selector++;
+                    } else if ($selector == 2) {
+                        array_push($arrayK3, $surat->barangKeluar[$counter++]->SuratKeluarBarang->namaBarang);
+                        $selector = 0;
+                    }
+                    if ($counter == $max) {
+                        break;
+                    }
+                }
+                if ($counter == $max) {
+                    break;
+                }
+            }
+        }
+
+        $selector = 0;
+
+        foreach ($surat->LokasiSuratKeluar as $lokasi) {
+            if ($selector == 0) {
+                array_push($arrayL1, $lokasi->lokasi->lokasi);
+                $selector++;
+            } else if ($selector == 1) {
+                array_push($arrayL2, $lokasi->lokasi->lokasi);
+                $selector++;
+            } else {
+                array_push($arrayL3, $lokasi->lokasi->lokasi);
+                $selector = 0;
+            }
+        }
+
+      
+        $tanggal = SuratKeluarBarangController::formatTanggalIndo(substr($surat->tanggal,0,10));
         $tahun = substr($surat->nomorSurat, -4);
         $angka = str_replace($tahun, '', $surat->nomorSurat);
-        return view('PicTelkom/detailSuratKeluar', compact('surat', 'angka', 'tahun', 'arrayL1', 'arrayL2', 'arrayL3'));
+        return view('PicTelkom/detailSuratKeluar', compact('surat', 'angka', 'tahun','tanggal', 'arrayL1', 'arrayL2', 'arrayL3','arrayK1', 'arrayK2', 'arrayK3'));
 
     }
 
@@ -63,6 +115,8 @@ class SuratKeluarBarangController extends Controller
             'nik' => 'required|max:50',
             'jabatan' => 'required',
             'perihal' => 'required',
+            'hari' => 'required',
+            'tanggal' => 'required',
             'lokasi' => 'required',
             'lampiransuratkeluar' => 'bail|mimes:pdf|max:2000',
             'namaLampiran' => 'required',
@@ -116,6 +170,8 @@ class SuratKeluarBarangController extends Controller
                     'validate' => 0,
                     'statusSurat' => 0,
                     'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
+                    'hari' => ucwords($request->hari),
+                    'tanggal' => $request->tanggal,
                 ]);
             } else {
                 $surat = SuratKeluarBarang::create([
@@ -127,6 +183,8 @@ class SuratKeluarBarangController extends Controller
                     'validate' => 0,
                     'statusSurat' => 0,
                     'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
+                     'hari' => ucwords($request->hari),
+                    'tanggal' => $request->tanggal,
                 ]);
             }
          } else {
@@ -139,6 +197,8 @@ class SuratKeluarBarangController extends Controller
                 'validate' => 0,
                 'statusSurat' => 0,
                 'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
+                 'hari' => ucwords($request->hari),
+                    'tanggal' => $request->tanggal,
             ]);
 
 
@@ -162,6 +222,7 @@ class SuratKeluarBarangController extends Controller
                 'idSuratKeluar' => $surat->id,
             ]);
         }
+
 
        if ($request->inputNamaBarang) {
                 foreach ($request->inputNamaBarang as $index => $namaBarang) {
