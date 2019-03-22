@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2019 at 07:12 AM
+-- Generation Time: Mar 22, 2019 at 05:16 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -52,12 +52,31 @@ INSERT INTO `beritasimaru` (`id`, `statusKondisi`, `pesan`, `statusBerita`, `cre
 --
 
 CREATE TABLE `daftarbarang` (
-  `id` int(11) NOT NULL,
-  `nomorSurat` int(11) NOT NULL,
-  `namaBarang` int(11) NOT NULL,
-  `merek` int(11) NOT NULL,
-  `serialNumber` int(11) NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `idSuratKeluar` int(10) UNSIGNED NOT NULL,
+  `namaBarang` varchar(100) NOT NULL,
+  `merek` varchar(50) NOT NULL,
+  `serialNumber` varchar(50) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `daftarbarang`
+--
+
+INSERT INTO `daftarbarang` (`id`, `idSuratKeluar`, `namaBarang`, `merek`, `serialNumber`, `created_at`, `updated_at`) VALUES
+(4, 119, 'modul', 'huawei', '121212', '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
+(6, 120, 'modul', 'huawei', '121212', '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
+(7, 120, 'modul', 'huawei', '121212', '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
+(8, 121, 'modul lpu51', 'huawei', '123456', '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
+(9, 121, 'modul lpu240', 'huawei', '78910', '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
+(10, 122, 'MODUL', 'HUAWEI', '1213242', '2019-03-21 02:26:27', '2019-03-21 02:26:27'),
+(11, 123, 'modul', 'HUWEI', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
+(12, 123, 'modul', 'asus', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
+(13, 123, 'modul', 'acer', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
+(14, 123, 'modul', 'toshiba', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
+(15, 123, 'modul', 'hp', '12345', '2019-03-22 04:05:05', '2019-03-22 04:05:05');
 
 -- --------------------------------------------------------
 
@@ -78,7 +97,8 @@ CREATE TABLE `forwarding` (
 --
 
 INSERT INTO `forwarding` (`id`, `idSuratMasuk`, `idPicTelkom`, `created_at`, `updated_at`) VALUES
-(1, 55, 1, '2019-03-15 01:40:47', '2019-03-15 01:40:47');
+(1, 55, 1, '2019-03-15 01:40:47', '2019-03-15 01:40:47'),
+(2, 56, 1, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
 
 -- --------------------------------------------------------
 
@@ -150,7 +170,8 @@ INSERT INTO `lampiran` (`id`, `path`, `pathUri`, `namaFile`, `idSuratMasuk`, `cr
 (55, 'lampiran/oFOjfIoRiwmQZJkYzwjrDdyDov7DUjbvpsxJmUng.pdf', 'oFOjfIoRiwmQZJkYzwjrDdyDov7DUjbvpsxJmUng.pdf', '20190129 NDE C.TEL. 169 PERMOHONAN IJIN MASUK DAN KERJA DI LOKASI STO MANYAR.PDF', 52, '2019-01-29 07:34:46', '2019-01-29 07:34:46'),
 (56, 'lampiran/TjakBJz0NbJQbhKPe2AXi52HwHg4eACvj29uT0ww.pdf', 'TjakBJz0NbJQbhKPe2AXi52HwHg4eACvj29uT0ww.pdf', '20190130 NDE C.TEL. 19 PERMOHONAN SIMARU UNTUK TEKNISI PT GSD.PDF', 53, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (57, 'lampiran/3BU0FKRIKMveWMmKNE7Z86g9drAiwX8MEHpvc7tu.pdf', '3BU0FKRIKMveWMmKNE7Z86g9drAiwX8MEHpvc7tu.pdf', 'NDE SIMARU PKL POLTEK JEMBER', 54, '2019-03-04 02:39:51', '2019-03-04 02:39:51'),
-(58, 'lampiran/xkAefjpgSrl7zBWfTfdDHM201fbGa62d6mfJ7k4Q.pdf', 'xkAefjpgSrl7zBWfTfdDHM201fbGa62d6mfJ7k4Q.pdf', 'SURAT IJIN MASUK', 55, '2019-03-15 01:40:48', '2019-03-15 01:40:48');
+(58, 'lampiran/xkAefjpgSrl7zBWfTfdDHM201fbGa62d6mfJ7k4Q.pdf', 'xkAefjpgSrl7zBWfTfdDHM201fbGa62d6mfJ7k4Q.pdf', 'SURAT IJIN MASUK', 55, '2019-03-15 01:40:48', '2019-03-15 01:40:48'),
+(59, 'lampiran/GILEcsgI3TQRnYZo2RXRdw5q6YQIheaxZBzSjbgG.pdf', 'GILEcsgI3TQRnYZo2RXRdw5q6YQIheaxZBzSjbgG.pdf', 'SURAT IJIN MASUK', 56, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
 
 -- --------------------------------------------------------
 
@@ -173,7 +194,20 @@ CREATE TABLE `lampiransuratkeluar` (
 --
 
 INSERT INTO `lampiransuratkeluar` (`id`, `path`, `pathUri`, `namaFile`, `idSuratKeluar`, `created_at`, `updated_at`) VALUES
-(16, 'lampiransuratkeluar/4cquATliF0Nnzbn1hpG20jFA18YHoyd9wNC5XGKw.pdf', 'uratkeluar/4cquATliF0Nnzbn1hpG20jFA18YHoyd9wNC5XGKw.pdf', 'SURAT IJIN', 82, '2019-03-18 02:18:47', '2019-03-18 02:18:47');
+(31, 'lampiransuratkeluar/8w52NzevKatOJ8Xt42ezqC81bW9XqrO1uw8zKC0G.pdf', 'uratkeluar/8w52NzevKatOJ8Xt42ezqC81bW9XqrO1uw8zKC0G.pdf', 'SIM', 110, '2019-03-19 08:17:20', '2019-03-19 08:17:20'),
+(32, 'lampiransuratkeluar/btFqpYarYgWbmNA0y5Zt6muy4UvaBrOOerJTvWKQ.pdf', 'uratkeluar/btFqpYarYgWbmNA0y5Zt6muy4UvaBrOOerJTvWKQ.pdf', 'SIM', 111, '2019-03-19 08:20:09', '2019-03-19 08:20:09'),
+(33, 'lampiransuratkeluar/MvmYK53Axe7gfC7qfIDOIHlyIHT15rlKP4UNDsPQ.pdf', 'uratkeluar/MvmYK53Axe7gfC7qfIDOIHlyIHT15rlKP4UNDsPQ.pdf', 'SIM', 112, '2019-03-20 01:25:32', '2019-03-20 01:25:32'),
+(34, 'lampiransuratkeluar/VOBrySkKL8u8JX9ChHpM17qfYxTAxWcKD07asall.pdf', 'uratkeluar/VOBrySkKL8u8JX9ChHpM17qfYxTAxWcKD07asall.pdf', 'SIM', 113, '2019-03-20 01:26:45', '2019-03-20 01:26:45'),
+(35, 'lampiransuratkeluar/EXe2H8012j2EB5bKa4KEsRmn8guHhFwA2C15zCFX.pdf', 'uratkeluar/EXe2H8012j2EB5bKa4KEsRmn8guHhFwA2C15zCFX.pdf', 'SIM', 114, '2019-03-20 01:37:33', '2019-03-20 01:37:33'),
+(36, 'lampiransuratkeluar/RxMDod9lyc9dg4HIPWMttFxF5knMiAy8KgkDq73H.pdf', 'uratkeluar/RxMDod9lyc9dg4HIPWMttFxF5knMiAy8KgkDq73H.pdf', 'SIM', 115, '2019-03-20 01:57:04', '2019-03-20 01:57:04'),
+(37, 'lampiransuratkeluar/VcnbgYGa4PGm1glUMKfLm5VlxYusEV3mjcbQu1d9.pdf', 'uratkeluar/VcnbgYGa4PGm1glUMKfLm5VlxYusEV3mjcbQu1d9.pdf', 'SIM', 116, '2019-03-20 02:02:59', '2019-03-20 02:02:59'),
+(38, 'lampiransuratkeluar/ATNH7Og6hthTbc7hNa0Ny9pXCUxdyDOHB1CCXSRJ.pdf', 'uratkeluar/ATNH7Og6hthTbc7hNa0Ny9pXCUxdyDOHB1CCXSRJ.pdf', 'SIM', 117, '2019-03-20 02:05:04', '2019-03-20 02:05:04'),
+(39, 'lampiransuratkeluar/jqQ6QU5J1Xw6QDHjAkUq88cFvW2VaGl62fTiglGh.pdf', 'uratkeluar/jqQ6QU5J1Xw6QDHjAkUq88cFvW2VaGl62fTiglGh.pdf', 'SIM', 118, '2019-03-20 02:45:58', '2019-03-20 02:45:58'),
+(40, 'lampiransuratkeluar/5C1KaMeHiFMSOGrKgA8uYG4HnqhJlDMWUZWlHBF5.pdf', 'uratkeluar/5C1KaMeHiFMSOGrKgA8uYG4HnqhJlDMWUZWlHBF5.pdf', 'SIM', 119, '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
+(41, 'lampiransuratkeluar/nNNeCwcJ6BqGhTFlMA4Pw87c3sV3A8mdQr1Id778.pdf', 'uratkeluar/nNNeCwcJ6BqGhTFlMA4Pw87c3sV3A8mdQr1Id778.pdf', 'SIM', 120, '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
+(42, 'lampiransuratkeluar/dziALfIeI9liiYVGZbACvTiNEDEyKLbsaFu9IxZQ.pdf', 'uratkeluar/dziALfIeI9liiYVGZbACvTiNEDEyKLbsaFu9IxZQ.pdf', 'SURAT IJIN', 121, '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
+(43, 'lampiransuratkeluar/1u741TQPc7NG1g5HBGKzLW1PmQ9s7CfLx6GuzszP.pdf', 'uratkeluar/1u741TQPc7NG1g5HBGKzLW1PmQ9s7CfLx6GuzszP.pdf', 'SURAT IJIN', 122, '2019-03-21 02:26:27', '2019-03-21 02:26:27'),
+(44, 'lampiransuratkeluar/92yIOsWBKpj0cH8JgzKaGMhMz5VmNfnms4IVq0Rl.pdf', 'uratkeluar/92yIOsWBKpj0cH8JgzKaGMhMz5VmNfnms4IVq0Rl.pdf', 'SURAT IJIN', 123, '2019-03-22 04:05:03', '2019-03-22 04:05:03');
 
 -- --------------------------------------------------------
 
@@ -307,7 +341,7 @@ INSERT INTO `logmasuk` (`id`, `tanggalMasuk`, `tanggalKeluar`, `masuk`, `keluar`
 (102, '2019-01-30', '2019-01-30', '11:42:55', '16:23:33', 1, 'Terselesaikan', '-', 56, 7, 11, 11, 2, '2019-01-30 04:42:55', '2019-01-30 09:23:33'),
 (103, '2019-01-30', '2019-01-30', '11:43:00', '16:23:38', 1, 'Terselesaikan', '-', 62, 7, 11, 11, 2, '2019-01-30 04:43:00', '2019-01-30 09:23:38'),
 (104, '2019-01-30', '2019-01-30', '15:39:04', '17:01:53', 1, 'Terselesaikan', '-', 217, 23, 11, 11, 2, '2019-01-30 08:39:04', '2019-01-30 10:01:53'),
-(105, '2019-03-15', '2019-03-15', '08:43:17', '08:50:00', 0, '-', '-', 850, 55, 6, 6, 2, '2019-03-15 01:43:17', '2019-03-15 01:43:17');
+(105, '2019-03-15', '2019-03-20', '08:43:17', '09:44:17', 1, 'Terselesaikan', '-', 850, 55, 6, 6, 2, '2019-03-15 01:43:17', '2019-03-20 02:44:17');
 
 -- --------------------------------------------------------
 
@@ -424,7 +458,8 @@ INSERT INTO `lokasikerja` (`id`, `idPekerjaan`, `idLokasi`, `created_at`, `updat
 (98, 51, 4, '2019-01-29 07:35:16', '2019-01-29 07:35:16'),
 (99, 52, 3, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (100, 53, 1, '2019-03-04 02:39:51', '2019-03-04 02:39:51'),
-(101, 54, 1, '2019-03-15 01:40:48', '2019-03-15 01:40:48');
+(101, 54, 1, '2019-03-15 01:40:48', '2019-03-15 01:40:48'),
+(102, 55, 1, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
 
 -- --------------------------------------------------------
 
@@ -436,9 +471,29 @@ CREATE TABLE `lokasisuratkeluar` (
   `id` int(10) UNSIGNED NOT NULL,
   `idLokasi` int(10) UNSIGNED NOT NULL,
   `idSuratKeluar` int(10) UNSIGNED NOT NULL,
-  `create_at` timestamp NULL DEFAULT NULL,
-  `update_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lokasisuratkeluar`
+--
+
+INSERT INTO `lokasisuratkeluar` (`id`, `idLokasi`, `idSuratKeluar`, `created_at`, `updated_at`) VALUES
+(2, 2, 110, '2019-03-19 08:17:20', '2019-03-19 08:17:20'),
+(3, 2, 111, '2019-03-19 08:20:09', '2019-03-19 08:20:09'),
+(4, 2, 112, '2019-03-20 01:25:33', '2019-03-20 01:25:33'),
+(5, 2, 113, '2019-03-20 01:26:45', '2019-03-20 01:26:45'),
+(6, 2, 114, '2019-03-20 01:37:33', '2019-03-20 01:37:33'),
+(7, 2, 115, '2019-03-20 01:57:04', '2019-03-20 01:57:04'),
+(8, 2, 116, '2019-03-20 02:02:59', '2019-03-20 02:02:59'),
+(9, 2, 117, '2019-03-20 02:05:04', '2019-03-20 02:05:04'),
+(10, 2, 118, '2019-03-20 02:45:58', '2019-03-20 02:45:58'),
+(11, 2, 119, '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
+(12, 2, 120, '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
+(13, 2, 121, '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
+(14, 10, 122, '2019-03-21 02:26:27', '2019-03-21 02:26:27'),
+(15, 9, 123, '2019-03-22 04:05:03', '2019-03-22 04:05:03');
 
 -- --------------------------------------------------------
 
@@ -624,7 +679,8 @@ INSERT INTO `pekerjaan` (`id`, `kegiatan`, `tanggalMulai`, `tanggalBerakhir`, `j
 (51, 'Pemasangan Jumper Grounding Busbar Perangkat Telkomsel Colo Telkom', '2019-01-30', '2019-02-15', '08:00:00', '17:00:00', 52, '2019-01-29 07:34:46', '2019-01-29 07:34:46'),
 (52, 'Perapihan Saluran Kabel', '2019-01-30', '2019-02-06', '07:30:00', '17:00:00', 53, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (53, 'PKL', '2019-03-04', '2019-03-04', '07:00:00', '09:50:00', 54, '2019-03-04 02:39:51', '2019-03-04 02:39:51'),
-(54, 'Pkl', '2019-03-15', '2019-03-15', '08:00:00', '08:50:00', 55, '2019-03-15 01:40:48', '2019-03-15 01:40:48');
+(54, 'Pkl', '2019-03-15', '2019-03-15', '08:00:00', '08:50:00', 55, '2019-03-15 01:40:48', '2019-03-15 01:40:48'),
+(55, 'Pkl', '2019-03-19', '2019-03-19', '00:00:00', '16:00:00', 56, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
 
 -- --------------------------------------------------------
 
@@ -1293,7 +1349,8 @@ INSERT INTO `petugas` (`id`, `idPicMitra`, `idSuratMasuk`, `created_at`, `update
 (847, 955, 53, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (848, 956, 53, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (849, 958, 54, '2019-03-04 02:39:51', '2019-03-04 02:39:51'),
-(850, 959, 55, '2019-03-15 01:40:48', '2019-03-15 01:40:48');
+(850, 959, 55, '2019-03-15 01:40:48', '2019-03-15 01:40:48'),
+(851, 960, 56, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
 
 -- --------------------------------------------------------
 
@@ -2270,7 +2327,8 @@ INSERT INTO `picmitra` (`id`, `nik`, `nama`, `kontak`, `keterangan`, `statusNda`
 (956, '-', 'DEVI AFIANTO', '-', 'GRAHA SARANA DUTA (GSD)', 0, 1, 1, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (957, '92150209', 'ANGGA PRAYUDI IRIANTO', '-', '-', 0, 2, 81, '2019-01-30 09:40:07', '2019-01-30 09:40:07'),
 (958, '1234234', 'FAIQ', '08124142', 'POLTEK JEMBER', 1, 1, 1, '2019-03-04 02:39:51', '2019-03-04 02:45:11'),
-(959, '1212121', 'saiful', '089121212', 'TELKOM AKSES', 1, 1, 1, '2019-03-15 01:40:48', '2019-03-15 01:43:09');
+(959, '1212121', 'saiful', '089121212', 'TELKOM AKSES', 1, 1, 1, '2019-03-15 01:40:48', '2019-03-15 01:43:09'),
+(960, '12345', 'saiful rizal', '089', 'TELKOM SURABAYA', 0, 1, 1, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
 
 -- --------------------------------------------------------
 
@@ -2339,6 +2397,8 @@ CREATE TABLE `suratkeluarbarang` (
   `validate` tinyint(4) NOT NULL,
   `statusSurat` tinyint(4) NOT NULL,
   `keterangan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hari` varchar(10) NOT NULL,
+  `tanggal` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -2347,10 +2407,21 @@ CREATE TABLE `suratkeluarbarang` (
 -- Dumping data for table `suratkeluarbarang`
 --
 
-INSERT INTO `suratkeluarbarang` (`id`, `nomorSurat`, `kepada`, `nik`, `jabatan`, `perihal`, `validate`, `statusSurat`, `keterangan`, `created_at`, `updated_at`) VALUES
-(80, '12019', 'SAIFUL', '123', 'Asman', 'Surat Iijin', 0, 0, 'surat keluar barang', '2019-03-18 02:18:01', '2019-03-18 02:18:01'),
-(81, '22019', 'SAIFUL', '123', 'Asman', 'Surat Iijin', 0, 0, 'surat keluar barang', '2019-03-18 02:18:33', '2019-03-18 02:18:33'),
-(82, '32019', 'SAIFUL', '123', 'Asman', 'Surat Iijin', 0, 0, 'surat keluar barang', '2019-03-18 02:18:47', '2019-03-18 02:18:47');
+INSERT INTO `suratkeluarbarang` (`id`, `nomorSurat`, `kepada`, `nik`, `jabatan`, `perihal`, `validate`, `statusSurat`, `keterangan`, `hari`, `tanggal`, `created_at`, `updated_at`) VALUES
+(110, '12019', 'SAIFUL RIZAL', '089', 'Engineer', 'Surat Ijin Membawa Barang Keluar', 0, 0, 'hati hati', '', '0000-00-00', '2019-03-19 08:17:20', '2019-03-19 08:17:20'),
+(111, '22019', 'SAIFUL', '12121', 'Engineer', 'Surat Ijin Keluar Barang', 0, 0, 'tidak ada', '', '0000-00-00', '2019-03-19 08:20:09', '2019-03-19 08:20:09'),
+(112, '32019', 'M SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin', 0, 0, '-', '', '0000-00-00', '2019-03-20 01:25:32', '2019-03-20 01:25:32'),
+(113, '42019', 'M SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin', 0, 0, '-', '', '0000-00-00', '2019-03-20 01:26:45', '2019-03-20 01:26:45'),
+(114, '52019', 'M SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin', 0, 0, '-', '', '0000-00-00', '2019-03-20 01:37:33', '2019-03-20 01:37:33'),
+(115, '62019', 'SAIFUL RIZAL', '12345', 'Asman', 'Surat Ijin Membawa Barang', 0, 0, 'sim', '', '0000-00-00', '2019-03-20 01:57:04', '2019-03-20 01:57:04'),
+(116, '72019', 'SAIFUL RIZAL', 'saiful rizal', 'Sim', 'Surat Ijin Membawa Barang', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:02:59', '2019-03-20 02:02:59'),
+(117, '82019', 'SAIFUL RIZAL', 'saiful rizal', 'Sim', 'Surat Ijin Membawa Barang', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:05:03', '2019-03-20 02:05:03'),
+(118, '92019', 'SAIFUL', '12133', 'Engineer', 'Surat Ijin Keluar', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:45:58', '2019-03-20 02:45:58'),
+(119, '102019', 'SAIFUL', '12133', 'Engineer', 'Surat Ijin Keluar', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
+(120, '112019', 'SAIFUL RIZAL', '12121', 'Manager', 'Surat Ijin', 0, 0, '-', 'Jumat', '2019-03-13', '2019-03-20 06:22:54', '2019-03-20 06:22:54'),
+(121, '122019', 'SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin Mengeluarkan Barang Modul Lpu51', 0, 0, 'barang ini akan direlokasi ke jakarta', 'Senin', '2019-03-18', '2019-03-21 01:41:20', '2019-03-21 01:41:20'),
+(122, '132019', 'SAIFUL RIZAL', '12345', 'ENGINEER', 'SURAT IJIN KELUAR BARANG', 0, 0, '-', 'Selasa', '2019-03-26', '2019-03-21 02:26:26', '2019-03-21 02:26:26'),
+(123, '142019', 'M SAIFUL RIZAL', '12345', 'Manager', 'Surat Ijin Untuk Membawa Barang', 0, 0, '-', 'Senin', '2019-03-25', '2019-03-22 04:05:02', '2019-03-22 04:05:02');
 
 -- --------------------------------------------------------
 
@@ -2427,7 +2498,8 @@ INSERT INTO `suratmasuk` (`id`, `nomorSurat`, `kepada`, `jumlahLampiran`, `perih
 (52, '472019', 'MITRATEL-PT IDE', 1, 'Surat Ijin Masuk Dan Ijin Kerja PT IDE Untuk Pemasangan Jumper Grounding Busbar Perangkat Telkomsel Colo Telkom Di STO Manyar', 'Nota Dinas MANAGER CONSTRUCTION JAWA BALI MITRATEL Nomor C.Tel. 169/TK 000/GMA-C1400000/2019 Tanggal 29 Januari 2019 Perihal Permohonan Ijin Masuk dan Kerja Di Lokasi STO Manyar', '-', 1, 1, 2, '2019-01-29 07:34:46', '2019-01-30 06:53:25'),
 (53, '482019', 'GRAHA SARANA DUTA (GSD)', 1, 'Surat Ijin Masuk Dan Ijin Kerja Oleh GSD Untuk Perapihan Saluran Kabel Di Data Center Gubeng', 'Nota Dinas HEAD OF SURABAYA AND BALI STAR DC MANAGEMENT TELKOMSIGMA Nomor C.Tel. 19/UM 000/JSCC-1217000/2019 Tanggal 30 Januari 2019 Perihal Permohonan SIMARU untuk Teknisi PT GSD', '-', 1, 1, 2, '2019-01-30 06:52:38', '2019-01-30 06:53:23'),
 (54, '492019', 'POLTEK JEMBER', 2, 'Surat Ijin Masuk STO Untuk Siswa PKL', 'NDE', 'PKL', 1, 1, 2, '2019-03-04 02:39:51', '2019-03-04 02:43:49'),
-(55, '502019', 'TELKOM AKSES', 1, 'Surat Ijin Pkl', 'ngf surabaya', 'pkl', 1, 1, 2, '2019-03-15 01:40:46', '2019-03-15 01:42:37');
+(55, '502019', 'TELKOM AKSES', 1, 'Surat Ijin Pkl', 'ngf surabaya', 'pkl', 1, 1, 2, '2019-03-15 01:40:46', '2019-03-15 01:42:37'),
+(56, '512019', 'TELKOM SURABAYA', 1, 'Surat Ijin Masuk Ruangan', 'nde surabaya', 'pkl', 0, 0, 0, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
 
 -- --------------------------------------------------------
 
@@ -2562,9 +2634,9 @@ INSERT INTO `user` (`id`, `nik`, `nama`, `username`, `password`, `kontak`, `role
 (1, '401519', 'Sigit Widagdo', 'adminsbs', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'admin', 1, 1, '5mQiWByM3de1fPMnQROiqrDh7cBf7HxWGsocrgWWRgvl1bmNtlo3Ye1kwZZy', NULL, NULL),
 (2, '-', 'GM WITEL', 'gmwitel', '$2y$10$mZK0j/lhiSs9HRbZ2BMXru3wCKQQe/fVbqlEON3.7wgJxEDYLccha', '-', 'gm', 1, 1, 'Xn7gvncCs8DCJPmnY6KL1d7PCn2a6n0XE5JKWT8bhGvB5zWSntpye3PbI0Ei', NULL, '2017-09-13 05:14:07'),
 (3, '-', 'MGR SAS', 'mgrsas', '$2y$10$kGgkq/5i5EBBoRGP3Vuow.fuozKkSgYx7IRiqA71mWlZnT9MxUTOS', '-', 'sas', 1, 1, 'cgix6tLwNlvjvSWNKv24KY4zYkXa2ScuI1lmOonPuNL7bViMr3ohtQrqTVcZ', NULL, '2017-09-13 05:12:58'),
-(4, '870022', 'Havea Pertiwi', '870022', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'validator', 1, 1, '2dz08NLZl0fryq15kXoMibFDDtJvrXZMRx6XzsJwFnVwFZmWTPyxKTk6K3lJ', NULL, NULL),
+(4, '870022', 'Havea Pertiwi', '870022', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'validator', 1, 1, '1tRIdpfRcQURgvNnYfAqlAI0YbOevbDE9zW81AuBngc8rhKpFopVaN4EhfZG', NULL, NULL),
 (5, '640986', 'Achmad Muslich', '640986', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'supervalidator', 1, 1, 'f6EM2NeSOHT1dqVkMJ1ieIgpXmw99llwJR9zZ4BfeHX8YTlBbeWyuStUoOos', NULL, NULL),
-(6, '20000', 'RKTTES', 'RKTTES', '$2y$10$V3UBVvHxf7kxYO3kS0fEMujW8oBrupW4FNjrnTgYrmSjjM.GoQmR2', '-', 'security', 1, 2, 'MuM88exTwQFxbNvHzFVLUNYnXLxNbzFm0qwv7Jv4AWjKWX4LQLnsvCvgiWQs', '2018-11-23 01:36:14', '2018-11-23 01:55:23'),
+(6, '20000', 'RKTTES', 'RKTTES', '$2y$10$V3UBVvHxf7kxYO3kS0fEMujW8oBrupW4FNjrnTgYrmSjjM.GoQmR2', '-', 'security', 1, 2, 'pE0ttCt6b7YcSBh9I3YTmVBosVzRacJVhsu0G1TglPITg6k4AnLXp4BnC9lQ', '2018-11-23 01:36:14', '2018-11-23 01:55:23'),
 (7, '20001', 'FERDIYANTO', 'Frediyanto', '$2y$10$6TNdy3dUGI51C1nxoKFs2ONkNNkl0tGMEtiW/0tqrN8GCqBQbaQX.', '082132398752', 'security', 1, 2, 'Gj2xjt3F7nm0GUAcSXna1NpdW9xPq98rh9qUlsQ3dqStOLHR26yKHLfk3cWT', '2018-11-23 01:37:16', '2018-11-23 01:55:26'),
 (8, '20002', 'GUNARTO', 'gunarto', '$2y$10$v1cMaV8oBu8S9ZUYNXNLee.FZGPFuiL1iR4vczvRJrc6kVfIg4.bK', '0813-5847-8429', 'security', 1, 2, '0R4CPuRZxe9I6HanZFsN7EQbE8QuXie4a39u9RMFYRbuct9XSFEOj51nYfTi', '2018-11-23 01:40:11', '2018-11-23 01:55:28'),
 (9, '20003', 'SUYANI', 'suyani', '$2y$10$NiafdEkbam9BEOooWFDJU.todFYRKVTrYZyaHjsZpsMg/b5C2ZuVq', '0822-3121-6914', 'security', 1, 2, 'w0AMZeVzo649722LCN3z3adVAuwC9LK73hopTdhKpHjm8STANGTXYzqlGpFI', '2018-11-23 01:44:01', '2018-11-23 01:55:31'),
@@ -2636,7 +2708,7 @@ INSERT INTO `user` (`id`, `nik`, `nama`, `username`, `password`, `kontak`, `role
 (75, '631064', 'TOFAN HIDAYAT', '631064', '$2y$10$IzzHRlf7SvWujuPEian9yuKsbWTJyNXqjxuYGJHp1LHgjuQbhlB9K', '0851-0099-6635', 'picTelkom', 1, 1, 'yrFMg6ptBH4BKmaF7CeKB6LODEbRbcGsQDfZNXLs1USCcHoEfTXdRPV2L3gs', '2019-01-14 03:46:55', '2019-01-14 03:47:14'),
 (76, '630126', 'SUDIRO', '630126', '$2y$10$S1KxYq6ODzDTrPtZV17Cmet1MhHNnFqog.FlmonLe8jJWiqPx6JRW', '0851-0591-3476', 'picTelkom', 1, 1, NULL, '2019-01-15 04:43:34', '2019-01-15 04:44:04'),
 (77, '31007', 'ARIS JIMAN SAPUTRO', 'aris19', '$2y$10$AnbnshO7QANlxqlaohu4mOODa5twzSoGXgEaFAonCs/f5xc6GfahW', '0851-0600-1919', 'security', 1, 4, 'FlBWa21xX834ErdTAM1EQCgG7IUlEJRRQX87lD0pSyxfLeg5HP0bjX1we7U6', '2019-01-24 02:11:33', '2019-01-24 02:11:58'),
-(78, '920268', 'Natanael Pandapotan', '920268', '$2y$10$qK2IocMATNkyBEjhmJSS2uhijs1mHj5sTkmXfl5tGiO8/s/MKrDUG', '081310108341', 'picTelkom', 1, 1, 'sCiZwc2cvQxLoKUJL3F0wr3FCcjt2vJmUgxc584hbBYsUhFF0OGyNM7RFOjq', '2019-02-18 03:24:12', '2019-03-13 02:31:17');
+(78, '920268', 'Natanael Pandapotan', '920268', '$2y$10$qK2IocMATNkyBEjhmJSS2uhijs1mHj5sTkmXfl5tGiO8/s/MKrDUG', '081310108341', 'picTelkom', 1, 1, 'dGctCRhuEURS8NhhUxVB4bGekAZftfjmcv8BFKlQMRVvh1R1XRvzAQarpWmO', '2019-02-18 03:24:12', '2019-03-13 02:31:17');
 
 -- --------------------------------------------------------
 
@@ -2711,7 +2783,30 @@ INSERT INTO `waspang` (`id`, `idSuratMasuk`, `idPicTelkom`, `created_at`, `updat
 (87, 52, 11, '2019-01-29 07:35:16', '2019-01-29 07:35:16'),
 (88, 53, 10, '2019-01-30 06:52:38', '2019-01-30 06:52:38'),
 (89, 54, 1, '2019-03-04 02:39:51', '2019-03-04 02:39:51'),
-(90, 55, 1, '2019-03-15 01:40:47', '2019-03-15 01:40:47');
+(90, 55, 1, '2019-03-15 01:40:47', '2019-03-15 01:40:47'),
+(91, 56, 1, '2019-03-19 08:29:18', '2019-03-19 08:29:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `waspangsuratkeluar`
+--
+
+CREATE TABLE `waspangsuratkeluar` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `idPicTelkom` int(10) UNSIGNED NOT NULL,
+  `idSuratKeluar` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `waspangsuratkeluar`
+--
+
+INSERT INTO `waspangsuratkeluar` (`id`, `idPicTelkom`, `idSuratKeluar`, `created_at`, `updated_at`) VALUES
+(1, 17, 122, '2019-03-21 02:26:26', '2019-03-21 02:26:26'),
+(2, 20, 123, '2019-03-22 04:05:03', '2019-03-22 04:05:03');
 
 --
 -- Indexes for dumped tables
@@ -2722,6 +2817,13 @@ INSERT INTO `waspang` (`id`, `idSuratMasuk`, `idPicTelkom`, `created_at`, `updat
 --
 ALTER TABLE `beritasimaru`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `daftarbarang`
+--
+ALTER TABLE `daftarbarang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `barang_idsuratkeluar_foreign` (`idSuratKeluar`);
 
 --
 -- Indexes for table `forwarding`
@@ -2872,6 +2974,14 @@ ALTER TABLE `waspang`
   ADD KEY `waspang_idpictelkom_foreign` (`idPicTelkom`);
 
 --
+-- Indexes for table `waspangsuratkeluar`
+--
+ALTER TABLE `waspangsuratkeluar`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `petugas_idSuratKeluar_foreign` (`idSuratKeluar`),
+  ADD KEY `petugas_idPicTelkom_foreign` (`idPicTelkom`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -2881,20 +2991,25 @@ ALTER TABLE `waspang`
 ALTER TABLE `beritasimaru`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `daftarbarang`
+--
+ALTER TABLE `daftarbarang`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
 -- AUTO_INCREMENT for table `forwarding`
 --
 ALTER TABLE `forwarding`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `lampiran`
 --
 ALTER TABLE `lampiran`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `lampiransuratkeluar`
 --
 ALTER TABLE `lampiransuratkeluar`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `logmasuk`
 --
@@ -2909,12 +3024,12 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `lokasikerja`
 --
 ALTER TABLE `lokasikerja`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT for table `lokasisuratkeluar`
 --
 ALTER TABLE `lokasisuratkeluar`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -2929,7 +3044,7 @@ ALTER TABLE `nda`
 -- AUTO_INCREMENT for table `pekerjaan`
 --
 ALTER TABLE `pekerjaan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
@@ -2944,12 +3059,12 @@ ALTER TABLE `perusahaan`
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=851;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=852;
 --
 -- AUTO_INCREMENT for table `picmitra`
 --
 ALTER TABLE `picmitra`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=960;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=961;
 --
 -- AUTO_INCREMENT for table `pictelkom`
 --
@@ -2959,12 +3074,12 @@ ALTER TABLE `pictelkom`
 -- AUTO_INCREMENT for table `suratkeluarbarang`
 --
 ALTER TABLE `suratkeluarbarang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `suratmasuk`
 --
 ALTER TABLE `suratmasuk`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `unitperusahaan`
 --
@@ -2979,10 +3094,21 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `waspang`
 --
 ALTER TABLE `waspang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+--
+-- AUTO_INCREMENT for table `waspangsuratkeluar`
+--
+ALTER TABLE `waspangsuratkeluar`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `daftarbarang`
+--
+ALTER TABLE `daftarbarang`
+  ADD CONSTRAINT `barang_idsuratkeluar_foreign` FOREIGN KEY (`idSuratKeluar`) REFERENCES `suratkeluarbarang` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `forwarding`
@@ -3078,6 +3204,13 @@ ALTER TABLE `user`
 ALTER TABLE `waspang`
   ADD CONSTRAINT `waspang_idpictelkom_foreign` FOREIGN KEY (`idPicTelkom`) REFERENCES `pictelkom` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `waspang_idsuratmasuk_foreign` FOREIGN KEY (`idSuratMasuk`) REFERENCES `suratmasuk` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `waspangsuratkeluar`
+--
+ALTER TABLE `waspangsuratkeluar`
+  ADD CONSTRAINT `petugas_idPicTelkom_foreign` FOREIGN KEY (`idPicTelkom`) REFERENCES `pictelkom` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `petugas_idSuratKeluar_foreign` FOREIGN KEY (`idSuratKeluar`) REFERENCES `suratkeluarbarang` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
