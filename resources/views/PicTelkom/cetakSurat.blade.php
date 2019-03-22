@@ -1,67 +1,34 @@
-@extends('PicTelkom.Layouts.rootPage')
+@extends('PicTelkom.Layouts.rootCetak')
 
+@section('title')
+<title>
+        Surat Keluar Barang Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}
+</title>
+@endsection
 @section('extraStyleSheet')
-    <style>
-        .identintasSurat {
-            width: 80px;
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin-top: 35px;
+            margin-bottom: 50px;
+            margin-left: 50px;
+            margin-right: 50px;
         }
 
-        .badanSuratNumber {
-            display: inline-block;
-            width: 15px;
-        }
-
-        .listDetailPekerjaan {
-            padding: 0% 0% 0% 6%;
-            width: 180px;
-        }
-
-        .listDetailPeraturan {
-            padding: 0% 0% 0% 10%;
-            margin: 0px;
-        }
-
-        .tabListDetail {
-            display: inline-block;
-            width: 150px;
-        }
-
-        .tabListPetugas {
-            padding-left: 24%;
+        @media print {
+            html, body {
+                width: auto;
+                height: auto;
+                font-family: "Times New Roman";
+                font-size: 15px;
+            }
         }
     </style>
 @endsection
 
 
-@section('content-header')
-    <h1>
-        Surat
-        <small><b>Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}</b></small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="{{route('picTelkom-home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    </ol>
-@endsection
-
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li><strong> {{ $error }} </strong></li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            @if(session('status'))
-                <div class="alert alert-{{session('status')}}">
-                    {{session('message')}}
-                </div>
-            @endif
-        </div>
-    </div>
+
     <section class="invoice">
         <div class="row">
             <div class="col-md-12 table-responsive">
@@ -202,7 +169,7 @@
                                         @foreach($arrayL3 as $loc)
                                          {{$loc}}                                        
                                          @endforeach
-                          </strong>  untuk keperluan dinas. Demikian disampaikan, mohon yang bersangkutan dapat diberikan izinnya. Terimakasih atas perhatian dan kerjasamanya <br><br><br><br>
+                          </strong>  untuk keperluan dinas. Demikian disampaikan, mohon yang bersangkutan dapat diberikan izinnya. Terimakasih atas perhatian dan kerjasamanya 
                         </td>
                     </tr>
                     </tbody>
@@ -296,26 +263,4 @@
 
 
 
-<br><br><br><br>
 
-             
-               
-           
-       
-           
-        <div class="row no-print">
-            <div class="col-xs-12">
-                 <a target="_blank" href="{{route('get-picTelkomCetakSuratKeluar',['id' => $surat->id])}}">
-                    <button type="button" class="btn btn-primary pull-right" style="margin:3px 5px 3px 0px;">
-                        <i class="fa fa-print"></i> Cetak Surat
-                    </button>
-                </a>
-                <a href="{{url()->previous()}}">
-                    <button type="button" class="btn btn-success pull-right" style="margin:3px 5px 3px 0px;">
-                      <i class="fa fa-back"></i> Kembali
-                    </button>
-                </a>
-            </div>
-        </div>
-    </section>
-@endsection

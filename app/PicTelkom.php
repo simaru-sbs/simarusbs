@@ -20,6 +20,10 @@ class PicTelkom extends Model
         return $this->hasMany(Waspang::class, 'idPicTelkom','id');
     }
 
+    public function waspangSuratKeluar(){
+        return $this->hasMany(WaspangSuratKeluar::class, 'idPicTelkom','id');
+    }
+
     public function forward(){
         return $this->hasMany(Forwarding::class, 'idPicTelkom','id');
     }

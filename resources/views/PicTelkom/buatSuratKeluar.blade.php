@@ -123,6 +123,34 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label>Pic Telkom / Yang Menyerahkan</label>
+                            <select class="form-control chosen-select" name="picTelkom[]"
+                                    style="border-radius: 10px" required>
+                                <option value="">-Pilih Pic Telkom-</option> 
+                                <?php $ketemu = false?>
+                                @if(old('picTelkom'))
+                                    @foreach($picTelkoms as $picTelkom)
+                                        @foreach(old('nama') as $pic)
+                                            @if($pic == $picTelkom->id)
+                                                <option value="{{$picTelkom->id}}" selected>{{$picTelkom->nama}}</option>
+                                                <?php $ketemu = true?>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if(!$ketemu)
+                                            <option value="{{$picTelkom->id}}">{{$picTelkom->nama}}</option>
+                                        @endif
+                                        <?php $ketemu = false?>
+                                    @endforeach
+                                @else
+                                    @foreach($picTelkoms as $picTelkom)
+                                        <option value="{{$picTelkom->id}}">{{$picTelkom->nama}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+
 
 
                         <div class="form-group">

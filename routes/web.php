@@ -389,7 +389,8 @@ Route::group(['middleware' => ['autentikasi']], function () {
         Route::post('/editSurat/{id}', ['uses' => 'SuratKeluarBarangController@EditSurat', 'as' => 'post-picTelkomeditSurat']);
         Route::get('/detailSuratKeluar/{id}', ['uses' => 'SuratKeluarBarangController@detailSuratKeluar', 'as' => 'get-picTelkomDetailSuratKeluar']);
 
-        Route::get('/cetakSurat/{id}', ['uses' => 'SuratKeluarBarangController@cetakSurat', 'as' => 'get-picTelkomcetakSurat']);
+
+        Route::get('/cetakSuratKeluar/{id}', ['uses' => 'SuratKeluarBarangController@cetakSuratKeluar', 'as' => 'get-picTelkomCetakSuratKeluar']);
 
 
         Route::get('/lihatSimaru/{id}', ['uses' => 'SuratIjinMasukController@detailSurat', 'as' =>'get-picTelkomDetailSurat']);

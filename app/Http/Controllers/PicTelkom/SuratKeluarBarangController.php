@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\SuratKeluarBarang;
 use App\PicTelkom;
 use App\PicMitra;
+use App\WaspangSuratKeluar;
 use App\UnitPerusahaan;
 use App\Lokasi;
 use App\LokasiSuratKeluar;
@@ -21,8 +22,10 @@ class SuratKeluarBarangController extends Controller
     public function indexBuatSurat()
     {
         $lokasis = Lokasi::where('id', '>' ,1)->get();
+        $picTelkoms = PicTelkom::all();
+        $jmlSurat = array();
 
-        return view('picTelkom/buatSuratKeluar', compact( 'lokasis'));
+        return view('picTelkom/buatSuratKeluar', compact( 'lokasis','picTelkoms','jmlSurat'));
     }
 
     public function indexLihatSuratKeluar()
@@ -53,6 +56,16 @@ class SuratKeluarBarangController extends Controller
         $arrayL1 = array();
         $arrayL2 = array();
         $arrayL3 = array();
+        $arrayP1 = array();
+        $arrayP2 = array();
+        $arrayP3 = array();
+        $arrayN1 = array();
+        $arrayN2 = array();
+        $arrayN3 = array();
+        $arrayZ1 = array();
+        $arrayZ2 = array();
+        $arrayZ3 = array();
+
 
 
         $max = $surat->barangKeluar->count();
@@ -97,11 +110,151 @@ class SuratKeluarBarangController extends Controller
             }
         }
 
+        $selector = 0;
+
+        foreach ($surat->WaspangSuratKeluar as $waspang) {
+            if ($selector == 0) {
+                array_push($arrayP1, $waspang->picTelkom->nik);
+                array_push($arrayN1, $waspang->picTelkom->nama);
+                array_push($arrayZ1, $waspang->picTelkom->unit);
+
+                $selector++;
+            } else if ($selector == 1) {
+                array_push($arrayP2, $waspang->picTelkom->nik);
+                array_push($arrayN2, $waspang->picTelkom->nama);
+                array_push($arrayZ2, $waspang->picTelkom->unit);
+                $selector++;
+            } else {
+                array_push($arrayP3, $waspang->picTelkom->nik);
+                array_push($arrayN3, $waspang->picTelkom->nama);
+                    array_push($arrayZ2, $waspang->picTelkom->unit);
+
+                $selector = 0;
+
+            }
+        }
+
+     
+        
+
       
         $tanggal = SuratKeluarBarangController::formatTanggalIndo(substr($surat->tanggal,0,10));
         $tahun = substr($surat->nomorSurat, -4);
         $angka = str_replace($tahun, '', $surat->nomorSurat);
-        return view('PicTelkom/detailSuratKeluar', compact('surat', 'angka', 'tahun','tanggal', 'arrayL1', 'arrayL2', 'arrayL3','arrayK1', 'arrayK2', 'arrayK3'));
+        return view('PicTelkom/detailSuratKeluar', compact('surat', 'angka', 'tahun','tanggal', 'arrayL1', 'arrayL2', 'arrayL3','arrayK1', 'arrayK2', 'arrayK3','arrayP1','arrayP2','arrayP3','arrayN1','arrayN2','arrayN3','arrayZ1','arrayZ2','arrayZ3'));
+
+    }
+
+
+
+     public function cetakSuratKeluar($id)
+    {
+        $surat = SuratKeluarBarang::where([
+            'id' => $id,
+        ])->get()->first();
+
+        if (!$surat) {
+            return redirect()->route('get-indexLihatSuratKeluar')
+                ->with([
+                    'status' => 'warning',
+                    'message' => 'Tidak terdapat surat dengan ID tersebut!'
+                ]);
+        }
+
+
+
+        $arrayK1 = array();
+        $arrayK2 = array();
+        $arrayK3 = array();
+        $arrayL1 = array();
+        $arrayL2 = array();
+        $arrayL3 = array();
+        $arrayP1 = array();
+        $arrayP2 = array();
+        $arrayP3 = array();
+        $arrayN1 = array();
+        $arrayN2 = array();
+        $arrayN3 = array();
+        $arrayZ1 = array();
+        $arrayZ2 = array();
+        $arrayZ3 = array();
+
+
+
+        $max = $surat->barangKeluar->count();
+        $selector = 0;
+        $counter = 0;
+
+        if ($max != 0) {
+            for ($i = 0; $i < 10; $i++) {
+                for ($k = 0; $k < 3; $k++) {
+                    if ($selector == 0) {
+                        array_push($arrayK1, $surat->barangKeluar[$counter++]->SuratKeluarBarang->namaBarang);
+                        $selector++;
+                    } else if ($selector == 1) {
+                        array_push($arrayK2, $surat->barangKeluar[$counter++]->SuratKeluarBarang->namaBarang);
+                        $selector++;
+                    } else if ($selector == 2) {
+                        array_push($arrayK3, $surat->barangKeluar[$counter++]->SuratKeluarBarang->namaBarang);
+                        $selector = 0;
+                    }
+                    if ($counter == $max) {
+                        break;
+                    }
+                }
+                if ($counter == $max) {
+                    break;
+                }
+            }
+        }
+
+        $selector = 0;
+
+        foreach ($surat->LokasiSuratKeluar as $lokasi) {
+            if ($selector == 0) {
+                array_push($arrayL1, $lokasi->lokasi->lokasi);
+                $selector++;
+            } else if ($selector == 1) {
+                array_push($arrayL2, $lokasi->lokasi->lokasi);
+                $selector++;
+            } else {
+                array_push($arrayL3, $lokasi->lokasi->lokasi);
+                $selector = 0;
+            }
+        }
+
+        $selector = 0;
+
+        foreach ($surat->WaspangSuratKeluar as $waspang) {
+            if ($selector == 0) {
+                array_push($arrayP1, $waspang->picTelkom->nik);
+                array_push($arrayN1, $waspang->picTelkom->nama);
+                array_push($arrayZ1, $waspang->picTelkom->unit);
+
+                $selector++;
+            } else if ($selector == 1) {
+                array_push($arrayP2, $waspang->picTelkom->nik);
+                array_push($arrayN2, $waspang->picTelkom->nama);
+                array_push($arrayZ2, $waspang->picTelkom->unit);
+                $selector++;
+            } else {
+                array_push($arrayP3, $waspang->picTelkom->nik);
+                array_push($arrayN3, $waspang->picTelkom->nama);
+                    array_push($arrayZ2, $waspang->picTelkom->unit);
+
+                $selector = 0;
+
+            }
+        }
+
+     
+        
+
+      
+        $tanggal = SuratKeluarBarangController::formatTanggalIndo(substr($surat->tanggal,0,10));
+        $tahun = substr($surat->nomorSurat, -4);
+        $angka = str_replace($tahun, '', $surat->nomorSurat);
+        return view('PicTelkom/cetakSurat', compact('surat', 'angka', 'tahun','tanggal', 'arrayL1', 'arrayL2', 'arrayL3','arrayK1', 'arrayK2', 'arrayK3','arrayP1','arrayP2','arrayP3','arrayN1','arrayN2','arrayN3','arrayZ1','arrayZ2','arrayZ3'));
 
     }
 
@@ -118,6 +271,7 @@ class SuratKeluarBarangController extends Controller
             'hari' => 'required',
             'tanggal' => 'required',
             'lokasi' => 'required',
+            'picTelkom' => 'required',
             'lampiransuratkeluar' => 'bail|mimes:pdf|max:2000',
             'namaLampiran' => 'required',
         ], [
@@ -197,12 +351,21 @@ class SuratKeluarBarangController extends Controller
                 'validate' => 0,
                 'statusSurat' => 0,
                 'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
-                 'hari' => ucwords($request->hari),
-                    'tanggal' => $request->tanggal,
+                'hari' => ucwords($request->hari),
+                'tanggal' => $request->tanggal,
             ]);
 
 
 
+        }
+
+
+
+         foreach ($request->picTelkom as $pic) {
+            WaspangSuratKeluar::create([
+                'idPicTelkom' => $pic,
+                'idSuratKeluar' => $surat->id
+            ]);
         }
 
         $path = Storage::putFile(
@@ -238,7 +401,7 @@ class SuratKeluarBarangController extends Controller
                     } else {
                         $BarangKeluar = BarangKeluar::create([
                             'idSuratKeluar' => $surat->id,
-                           'namaBarang' => $namaBarang,
+                            'namaBarang' => $namaBarang,
                             'merek' => $request->inputMerek[$index],
                             'serialNumber' => $request->inputSerialNumber[$index],
                         ]);

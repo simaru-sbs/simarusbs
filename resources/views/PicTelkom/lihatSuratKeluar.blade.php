@@ -42,9 +42,8 @@
                             <th style="width: 10%;vertical-align: middle">Instansi</th>
                             <th style="width: 10%;vertical-align: middle">Lokasi</th>
                             <th style="width: 10%;vertical-align: middle">Hari</th>
-                           <th style="width: 10%;vertical-align: middle">Tanggal</th>
+                            <th style="width: 10%;vertical-align: middle">Tanggal</th>
                             <th style="vertical-align: middle">Keterangan</th>
-
                             <th style="vertical-align: middle">Status</th>
                             <th style="width: 5%; vertical-align: middle">Action</th>
                         </tr>
