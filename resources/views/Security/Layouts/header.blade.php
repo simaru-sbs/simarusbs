@@ -18,7 +18,30 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
-
+  <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <span class="label label-success"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">Anda memiliki pesan</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+               
+                  <li><!-- start message -->
+                   
+                      <div class="pull-left">
+                      
+                    </a>
+                  </li>
+                  <!-- end message -->
+                
+                </ul>
+              </li>
+              <li class="footer"><a href="">Lihat Semua Pesan</a></li>
+            </ul>
+          </li>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{url('img/iconUser.png')}}" class="user-image" alt="User Image">

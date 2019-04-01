@@ -1,4 +1,4 @@
-@extends('PicTelkom.Layouts.rootPage')
+@extends('Security/Layouts.rootPage')
 
 @section('extraStyleSheet')
     <link rel="stylesheet" href="{{url('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
@@ -8,7 +8,7 @@
     <h1>Lihat Surat Ijin Keluar Barang
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{route('picTelkom-home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{route('security-home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
     </ol>
 @endsection
 
@@ -41,7 +41,7 @@
                             <th style="width: 10%;vertical-align: middle">Nomor Surat</th>
                             <th style="width: 10%;vertical-align: middle">Instansi</th>
                             <th style="width: 10%;vertical-align: middle">Lokasi</th>
-                            
+                           
                             <th style="width: 10%;vertical-align: middle">Tanggal</th>
                             <th style="vertical-align: middle">Keterangan</th>
                             <th style="vertical-align: middle">Status</th>
@@ -68,7 +68,7 @@
                                         @endif
                                     @endforeach
                                 </td>
-                                      
+                                     
                                   <td>{{$surat->tanggal}}</td>
                                 <td>{{$surat->keterangan}}</td>
                           
@@ -90,7 +90,7 @@
                                 <td>
                                      <div class="row" style="padding-bottom: 5px">
                                     <div class="col-xs-6" style="padding: 0px 9px 0px 10px">
-                                        <a href="{{route('get-picTelkomDetailSuratKeluar',['id' => $surat->id])}}">
+                                        <a href="{{route('get-securityDetailSuratKeluar',['id' => $surat->id])}}">
                                             <button type="submit"
                                                     class="btn btn-info pull-right btn-block btn-sm"
                                                     data-toogle="tooltip" data-placement="bottom"  title="Tampilkan Surat">
@@ -98,17 +98,6 @@
                                             </button>
                                         </a>
                                     </div>
-
-                                 
-                                        <div class="col-xs-6" style="padding: 0px 12px 0px 7px">
-                                            <a href="{{route('get-picTelkomeditSuratKeluar',['id' => $surat->id])}}">
-                                                <button type="submit"
-                                                        class="btn btn-warning pull-right btn-block btn-sm"
-                                                        data-toogle="tooltip" data-placement="bottom"  title="Edit Surat">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </a>
-                                        </div>
                                     </div>
                                 </td>
                             </tr>

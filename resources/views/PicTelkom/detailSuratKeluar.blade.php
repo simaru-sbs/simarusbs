@@ -78,7 +78,7 @@
                 <hr style="margin: 4% 0px 0% 0px;border: 1px solid #000;">
                   <p style="text-align:center; padding-top: 0px;padding-right: 120px">
         Surat
-        <b>Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}<br><br><br></b>
+        <b>Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}<br><br></b>
     </p>
             </div>
         </div>
@@ -94,27 +94,24 @@
                     </tr>
                       <tr>
                         
-                          <td> <strong><br>Bagian Keamanan
+                          <td><strong><br>Bagian Keamanan
                             
                                         @foreach($arrayL1 as $loc)
                                             {{$loc}}
                                         @endforeach
-                           
-     
                                         @foreach($arrayL2 as $loc)
                                            {{$loc}}
                                         @endforeach
-                  
                                         @foreach($arrayL3 as $loc)
                                          {{$loc}}                                        
                                          @endforeach
-                          </strong>   
-                        </td>
+                             </strong>   
+                          </td>
               
                     
                    
 
-                     <tr>
+                    <tr>
                         <td style="vertical-align: top;" class="identintasSurat"> <br><br>Surat ini adalah bukti resmi yang diberikan kepada</td>
                         <td style="vertical-align: top"> :</td>
                     
@@ -139,7 +136,7 @@
                         <td style="vertical-align: top"> :</td>
                     
                     </tr>
-                        <table id="table1" class="table table-bordered table-striped" ">
+                        <table id="table1" class="table table-bordered table-striped">
                             <thead>
                             <tr><br><br>
                                 <th style="width: 5%; vertical-align: middle">No</th>
@@ -167,12 +164,7 @@
                         </table>
 
             <table>
-             <tr>
-                <td style="vertical-align: top;" class="identintasSurat">Hari</td>
-                <td style="vertical-align: top"> :</td>
-                <td style="padding-left: 5px"><strong>{{$surat->hari}} </strong> </td>
-             </tr>
-
+            
               <tr>
                 <td style="vertical-align: top;" class="identintasSurat">Tanggal</td>
                 <td style="vertical-align: top"> :</td>

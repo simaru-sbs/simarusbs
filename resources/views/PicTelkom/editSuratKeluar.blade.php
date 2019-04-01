@@ -6,7 +6,7 @@
 @endsection
 
 @section('content-header')
-    <h1>Buat Surat Keluar Barang
+    <h1>Edit Surat Keluar Barang
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{route('picTelkom-home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -34,7 +34,8 @@
         </div>
     </div>
 
-    <form action="{{route('post-picTelkombuatSuratKeluar')}}" role="form" method="POST" enctype="multipart/form-data">
+      <form action="{{route('post-picTelkomeditSuratKeluar', ['id' => $surat->id])}}" role="form" method="POST"
+          enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-12">
@@ -51,55 +52,100 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label>Kepada</label>
-                            <input type="text"
-                                   class="form-control"
-                                   name="kepada"
-                                   placeholder="Penerima / Pembawa Barang" required autocomplete="off"
-                                   value="{{old('kepada')}}"
-                            >
+                            @if(old('kepada'))
+                                <input type="text"
+                                       class="form-control"
+                                       name="kepada"
+                                       placeholder="Penerima / Pembawa Barang" required autocomplete="off"
+                                       value="{{old('kepada')}}"
+                                >
+                            @else
+                                <input type="text"
+                                       class="form-control"
+                                       name="kepada"
+                                       placeholder="Penerima / Pembawa Barang" required autocomplete="off"
+                                       value="{{$surat->kepada}}"
+                                >
+                            @endif
                         </div>
                         <div class="form-group">
                             <label>NIK</label>
+                             @if(old('nik'))
                             <input type="text"
                                    class="form-control"
                                    name="nik"
                                    placeholder="NIK" required autocomplete="off"
-                                   value="{{old('kepada')}}"
+                                   value="{{old('nik')}}"
                             >
+                             @else
+
+                              <input type="text"
+                                   class="form-control"
+                                   name="nik"
+                                   placeholder="NIK" required autocomplete="off"
+                                   value="{{$surat->nik}}"
+                            >
+                            @endif
                         </div>
                         <div class="form-group">
                             <label>Perusahaan</label>
+                            @if(old('perusahaan'))
                             <input type="text"
                                    class="form-control"
                                    name="perusahaan"
                                    placeholder="Divisi / Nama Perusahaan" required autocomplete="off"
                                    value="{{old('perusahaan')}}"
                             >
+                             @else
+                             <input type="text"
+                                   class="form-control"
+                                   name="perusahaan"
+                                   placeholder="Divisi / Nama Perusahaan" required autocomplete="off"
+                                   value="{{$surat->perusahaan}}">
+                                @endif
                         </div>
                         <div class="form-group">
+
                             <label>Jabatan</label>
+                              @if(old('jabatan'))
                             <input type="text"
                                    class="form-control"
                                    name="jabatan"
                                    placeholder="Engineer / Asman OM IP Network " required autocomplete="off"
-                                   value="{{old('namaLampiran')}}"
+                                   value="{{old('jabatan')}}"
                             >
+                            @else
+                             <input type="text"
+                                   class="form-control"
+                                   name="jabatan"
+                                   placeholder="Engineer / Asman OM IP Network " required autocomplete="off"
+                                   value="{{$surat->jabatan}}"
+                            >
+                            @endif
                         </div>
                         <div class="form-group">
                             <label>Perihal</label>
+                            @if(old('perihal'))
                             <input type="text"
                                    class="form-control"
                                    name="perihal"
                                    placeholder="Surat Izin Membawa Keluar Barang Untuk ..." required autocomplete="off"
                                    value="{{old('perihal')}}"
                             >
+                            @else
+                            <input type="text"
+                                   class="form-control"
+                                   name="perihal"
+                                   placeholder="Surat Izin Membawa Keluar Barang Untuk ..." required autocomplete="off"
+                                   value="{{$surat->perihal}}"
+                            >
+                            @endif
                         </div>
 
                         <div class="form-group">
                             <label>Lokasi</label>
-                            <select class="form-control chosen-select" name="lokasi[]"
+                            <select class="form-control" name="lokasi[]"
                                     style="border-radius: 10px" required>
-                                <option value="">-Pilih Lokasi-</option> 
                                 <?php $ketemu = false?>
                                 @if(old('lokasi'))
                                     @foreach($lokasis as $lokasi)
@@ -117,7 +163,17 @@
                                     @endforeach
                                 @else
                                     @foreach($lokasis as $lokasi)
-                                        <option value="{{$lokasi->id}}">{{$lokasi->lokasi}}</option>
+                                        @foreach($surat->lokasiSuratKeluar as $loc)
+                                            @if($loc->idLokasi == $lokasi->id)
+                                                <option value="{{$lokasi->id}}" selected>{{$lokasi->lokasi}}</option>
+                                                <?php $ketemu = true?>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if(!$ketemu)
+                                            <option value="{{$lokasi->id}}">{{$lokasi->lokasi}}</option>
+                                        @endif
+                                        <?php $ketemu = false?>
                                     @endforeach
                                 @endif
                             </select>
@@ -152,36 +208,78 @@
                         </div>
 
                          <div class="form-group">
+
                             <label>Tanggal</label>
+                             @if(old('tanggal'))
                             <input type="date" class="form-control" name="tanggal" 
                                    required
                                    value="{{old('tanggal')}}"
+
+
                             >
+                            @else <input type="date" class="form-control" name="tanggal" 
+                                   required 
+                                   value="{{$surat->tanggal}}">
+                            @endif
                         </div>
+
+
+
 
                         <div class="form-group">
                             <label>Keterangan Tambahan</label>
+                             @if(old('keterangan'))
                             <input type="text"
                                    class="form-control"
                                    name="keterangan"
                                    placeholder="Keterangan Khusus Untuk Surat Keluar Barang" autocomplete="off"
                                    value="{{old('keterangan')}}">
+                            @else
+                             <input type="text"
+                                   class="form-control"
+                                   name="keterangan"
+                                   placeholder="Keterangan Khusus Untuk Surat Keluar Barang" autocomplete="off"
+                                    value="{{$surat->keterangan}}">
+                        @endif
+
                         </div>
 
-                         <div class="form-group">
-                            <label>Nama Lampiran</label>
-                            <input type="text"
-                                   class="form-control"
-                                   name="namaLampiran"
-                                   placeholder="Nama Lampiran" required autocomplete="off"
-                                   value="{{old('namaLampiran')}}"
-                            >
-                        </div>
 
                         <div class="form-group">
+                            <label>Nama Lampiran</label>
+                            @if(old('namaLampiran'))
+                                <input type="text"
+                                       class="form-control"
+                                       name="namaLampiran"
+                                       placeholder="Nama Lampiran" required
+                                       autocomplete="off"
+                                       value="{{old('namaLampiran')}}"
+                                >
+                            @else
+                                <input type="text"
+                                       class="form-control"
+                                       name="namaLampiran"
+                                       placeholder="Nama Lampiran" required
+                                       autocomplete="off"
+                                       value="{{($surat->lampiransuratkeluar ? $surat->lampiransuratkeluar->namaFile : "Lampiran Telah Dihapus!")}}"
+                                >
+                            @endif
+
+                        </div>
+                       
+
+                     <div class="form-group">
                             <label>Lampiran</label>
+                            <select class="form-control" id="lampiranSelect" name="lampiranSelect" required>
+                                <option value="lama" selected>Lampiran Lama</option>
+                                <option value="baru">Lampiran Baru</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="lamp">
+                            <label>Upload Lampiran</label>
                             <input type="file"
-                                   name="lampiransuratkeluar" required>
+                                   name="lampiran"
+                            >
                         </div>
                     </div>
                 </div>
@@ -206,13 +304,28 @@
                                 <div class="row" id="formTambah">
                                     <div class="col-md-9">
                                         <div class="form-group">
+                                            @if(old('jumlahBarang'))
                                             <input type="number" 
                                                    class="form-control"
                                                    name="jumlahBarang"
                                                    placeholder="0" 
                                                    id="jumlah" 
-                                                   value="{{old('jumlah')}}"
+                                                   value="{{old('jumlahBarang')}}"
                                                    autocomplete="off">
+
+                                            @else
+
+                                             <input type="number" 
+                                                   class="form-control"
+                                                   name="jumlahBarang"
+                                                   placeholder="0" 
+                                                   id="jumlah" 
+                                                   
+                                                   autocomplete="off"
+
+                                                value="{{$surat->jumlahBarang}}">
+                                                @endif
+
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -233,7 +346,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+       
 
     </form>
 
@@ -248,7 +361,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-block btn-success" id="submit">Buat Form
+                <button type="submit" class="btn btn-block btn-success" id="submit">Update Form
                 </button>
             </div>
         </div>
@@ -263,6 +376,24 @@
     <script src="{{url('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
     <script>
+
+
+
+         $(function () {
+            $('#lamp').hide();
+
+            $("#lampiranSelect").prop("selectedIndex", 0);
+
+            $("#lampiranSelect").on('change', function () {
+                $('#lamp').hide('slow');
+                var selected = $(this).val();
+                if (selected == 'lama') {
+                    $('#lamp').hide('slow');
+                } else if (selected == 'baru') {
+                    $('#lamp').show('slow');
+                }
+            });
+
         $(function () {
 
             var temp = 0;

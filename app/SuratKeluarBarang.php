@@ -12,12 +12,12 @@ class SuratKeluarBarang extends Model
         'nomorSurat',
         'kepada',
         'nik',
+        'perusahaan',
         'jabatan',
         'perihal',
         'validate',
         'statusSurat',
         'keterangan',
-        'hari',
         'tanggal',
     ];
 

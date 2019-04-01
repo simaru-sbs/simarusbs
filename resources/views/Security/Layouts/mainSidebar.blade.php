@@ -64,6 +64,28 @@
                     <i class="glyphicon glyphicon glyphicon-book"></i> <span>Log Book</span>
                 </a>
             </li>
+
+
+
+
+             <li class="{{areActiveRoutes([
+            'get-securityIndexLihatSuratKeluar'
+            ])}} treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-envelope"></i> <span>Surat Keluar Barang</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{areActiveRoutes([
+                     'get-securityIndexLihatSuratKeluar',
+                    ])}}"><a href="{{route('get-securityIndexLihatSuratKeluar')}}"><i class="glyphicon glyphicon-th-list"></i> Lihat Surat Keluar</a></li>
+                </ul>
+            </li>
+
+
+
             <li class="{{areActiveRoutes([
                 'get-buatBerita','post-buatBerita','get-editBerita','post-editBerita',
                 'get-lihatBerita','get-setAktifBerita','get-setPasifBerita'

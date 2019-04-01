@@ -337,6 +337,12 @@ Route::group(['middleware' => ['autentikasi']], function () {
         Route::get('/editProfile' , ['uses' => 'ProfileController@indexProfile', 'as' => 'security-indexProfile']);
         Route::post('/editProfile' , ['uses' => 'ProfileController@editProfile', 'as' => 'security-editProfile']);
 
+         Route::get('/detailSuratKeluar/{id}', ['uses' => 'SuratIjinKeluarBarangController@detailSuratKeluar', 'as' => 'get-securityDetailSuratKeluar']);
+
+
+        Route::get('/cetakSuratKeluar/{id}', ['uses' => 'SuratIjinKeluarBarangController@cetakSuratKeluar', 'as' => 'get-securityCetakSuratKeluar']);
+
+
         Route::get('/cariPicMitra', ['uses' => 'SuratIjinMasukController@indexCariPic', 'as' =>'get-securityIndexCariPicMitra']);
         Route::get('/hasilPicMitra', ['uses' => 'SuratIjinMasukController@CariPic', 'as' =>'get-securityCariPicMitra']);
         Route::get('/cariNoSimaru', ['uses' => 'SuratIjinMasukController@indexNoSimaru', 'as' =>'get-securityIndexCariNoSimaru']);
@@ -347,6 +353,7 @@ Route::group(['middleware' => ['autentikasi']], function () {
         Route::get('/lihatLogMasuk', ['uses' => 'LogMasukController@logBelumTerselesaikan', 'as' =>'get-securityLogBelumTerselesaikan']);
         Route::get('/hapusLogMasuk/{id}', ['uses' => 'LogMasukController@hapusLogMasuk', 'as' =>'get-securityHapusLog']);
         Route::get('/indexLogBook', ['uses' => 'LogBookController@indexLogBook', 'as' =>'get-securityIndexLogBook']);
+        Route::get('/indexLihatSuratKeluar', ['uses' => 'suratIjinKeluarBarangController@indexLihatSuratKeluar', 'as' =>'get-securityIndexLihatSuratKeluar']);
         Route::get('/logBook', ['uses' => 'LogBookController@lihatLogBook', 'as' =>'get-securityLihatLogBook']);
         Route::get('/keluarTervalidasi', ['uses' => 'LogBookController@keluarTervalidasi', 'as' =>'get-securityKeluarTervalidasi']);
         Route::get('/logMelebihiWaktu', ['uses' => 'LogBookController@logMelebihiWaktu', 'as' =>'get-securityLogMelebihiWaktu']);
@@ -383,6 +390,10 @@ Route::group(['middleware' => ['autentikasi']], function () {
 
         Route::get('/buatSuratKeluar', ['uses' => 'SuratKeluarBarangController@indexBuatSurat', 'as' => 'get-picTelkombuatSuratKeluar']);
         Route::post('/buatSuratKeluar', ['uses' => 'SuratKeluarBarangController@buatSuratKeluar', 'as' => 'post-picTelkombuatSuratKeluar']);
+         Route::get('/editSuratKeluar{id}', ['uses' => 'SuratKeluarBarangController@indexEditSurat', 'as' => 'get-picTelkomeditSuratKeluar']);
+        Route::post('/editSuratKeluar{id}', ['uses' => 'SuratKeluarBarangController@editSuratKeluar', 'as' => 'post-picTelkomeditSuratKeluar']);
+
+
         Route::get('/lihatSuratKeluar', ['uses' => 'SuratKeluarBarangController@indexLihatSuratKeluar', 'as' => 'get-picTelkomindexLihatSuratKeluar']);
         Route::get('/hapusSurat/{id}', ['uses' => 'SuratKeluarBarangController@hapusSurat', 'as' => 'get-picTelkomhapusSurat']);
         Route::get('/editSurat/{id}', ['uses' => 'SuratKeluarBarangController@indexEditSurat', 'as' => 'get-picTelkomindexEditSurat']);

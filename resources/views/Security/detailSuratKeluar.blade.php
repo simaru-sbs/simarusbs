@@ -1,34 +1,67 @@
-@extends('PicTelkom.Layouts.rootCetak')
+@extends('Security.Layouts.rootPage')
 
-@section('title')
-<title>
-        Surat Keluar Barang Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}
-</title>
-@endsection
 @section('extraStyleSheet')
-    <style type="text/css">
-        @page {
-            size: A4;
-            margin-top: 35px;
-            margin-bottom: 50px;
-            margin-left: 50px;
-            margin-right: 50px;
+    <style>
+        .identintasSurat {
+            width: 80px;
         }
 
-        @media print {
-            html, body {
-                width: auto;
-                height: auto;
-                font-family: "Times New Roman";
-                font-size: 15px;
-            }
+        .badanSuratNumber {
+            display: inline-block;
+            width: 15px;
+        }
+
+        .listDetailPekerjaan {
+            padding: 0% 0% 0% 6%;
+            width: 180px;
+        }
+
+        .listDetailPeraturan {
+            padding: 0% 0% 0% 10%;
+            margin: 0px;
+        }
+
+        .tabListDetail {
+            display: inline-block;
+            width: 150px;
+        }
+
+        .tabListPetugas {
+            padding-left: 24%;
         }
     </style>
 @endsection
 
 
-@section('content')
+@section('content-header')
+    <h1>
+        Surat
+        <small><b>Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}</b></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{route('security-home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+    </ol>
+@endsection
 
+@section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li><strong> {{ $error }} </strong></li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if(session('status'))
+                <div class="alert alert-{{session('status')}}">
+                    {{session('message')}}
+                </div>
+            @endif
+        </div>
+    </div>
     <section class="invoice">
         <div class="row">
             <div class="col-md-12 table-responsive">
@@ -45,7 +78,7 @@
                 <hr style="margin: 4% 0px 0% 0px;border: 1px solid #000;">
                   <p style="text-align:center; padding-top: 0px;padding-right: 120px">
         Surat
-        <b>Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}<br><br><br></b>
+        <b>Tel. {{$angka}}/SIMARU/SBS/{{$tahun}}<br><br></b>
     </p>
             </div>
         </div>
@@ -61,27 +94,24 @@
                     </tr>
                       <tr>
                         
-                          <td> <strong><br>Bagian Keamanan
+                          <td><strong><br>Bagian Keamanan
                             
                                         @foreach($arrayL1 as $loc)
                                             {{$loc}}
                                         @endforeach
-                           
-     
                                         @foreach($arrayL2 as $loc)
                                            {{$loc}}
                                         @endforeach
-                  
                                         @foreach($arrayL3 as $loc)
                                          {{$loc}}                                        
                                          @endforeach
-                          </strong>   
-                        </td>
+                             </strong>   
+                          </td>
               
                     
                    
 
-                     <tr>
+                    <tr>
                         <td style="vertical-align: top;" class="identintasSurat"> <br><br>Surat ini adalah bukti resmi yang diberikan kepada</td>
                         <td style="vertical-align: top"> :</td>
                     
@@ -106,7 +136,7 @@
                         <td style="vertical-align: top"> :</td>
                     
                     </tr>
-                        <table id="table1" class="table table-bordered table-striped" ">
+                        <table id="table1" class="table table-bordered table-striped">
                             <thead>
                             <tr><br><br>
                                 <th style="width: 5%; vertical-align: middle">No</th>
@@ -135,7 +165,6 @@
 
             <table>
             
-
               <tr>
                 <td style="vertical-align: top;" class="identintasSurat">Tanggal</td>
                 <td style="vertical-align: top"> :</td>
@@ -165,7 +194,7 @@
                                         @foreach($arrayL3 as $loc)
                                          {{$loc}}                                        
                                          @endforeach
-                          </strong>  untuk keperluan dinas. Demikian disampaikan, mohon yang bersangkutan dapat diberikan izinnya. Terimakasih atas perhatian dan kerjasamanya 
+                          </strong>  untuk keperluan dinas. Demikian disampaikan, mohon yang bersangkutan dapat diberikan izinnya. Terimakasih atas perhatian dan kerjasamanya <br><br><br><br>
                         </td>
                     </tr>
                     </tbody>
@@ -259,4 +288,26 @@
 
 
 
+<br><br><br><br>
 
+             
+               
+           
+       
+           
+        <div class="row no-print">
+            <div class="col-xs-12">
+                 <a target="_blank" href="{{route('get-securityCetakSuratKeluar',['id' => $surat->id])}}">
+                    <button type="button" class="btn btn-primary pull-right" style="margin:3px 5px 3px 0px;">
+                        <i class="fa fa-print"></i> Cetak Surat
+                    </button>
+                </a>
+                <a href="{{url()->previous()}}">
+                    <button type="button" class="btn btn-success pull-right" style="margin:3px 5px 3px 0px;">
+                      <i class="fa fa-back"></i> Kembali
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+@endsection

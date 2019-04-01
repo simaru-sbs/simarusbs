@@ -1,4 +1,4 @@
-@extends('PicTelkom.Layouts.rootCetak')
+@extends('Security.Layouts.rootCetak')
 
 @section('title')
 <title>
