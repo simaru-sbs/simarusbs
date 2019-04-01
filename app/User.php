@@ -37,6 +37,10 @@ class User extends Authenticatable
         return $this->hasMany(LogMasuk::class, 'idSecurityMasuk','id');
     }
 
+      public function security(){
+        return $this->hasMany(LogBarangKeluar::class, 'idSecurity','id');
+    }
+
     public function securityKeluar(){
         return $this->hasMany(LogMasuk::class, 'idSecurityKeluar','id');
     }

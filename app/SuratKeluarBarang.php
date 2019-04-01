@@ -15,7 +15,7 @@ class SuratKeluarBarang extends Model
         'perusahaan',
         'jabatan',
         'perihal',
-        'validate',
+     
         'statusSurat',
         'keterangan',
         'tanggal',
@@ -37,5 +37,10 @@ class SuratKeluarBarang extends Model
 
     public function waspangSuratKeluar(){
         return $this->hasMany(WaspangSuratKeluar::class, 'idSuratkeluar', 'id');
+    }
+
+     public function logBarangKeluar()
+    {
+        return $this->hasMany(LogBarangKeluar::class, 'idSuratKeluar', 'id');
     }
 }

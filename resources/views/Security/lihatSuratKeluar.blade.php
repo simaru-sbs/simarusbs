@@ -77,9 +77,9 @@
                                     @if($surat->statusSurat == 0)
                                         Belum Tervalidasi.
                                     @elseif($surat->statusSurat == 1)
-                                        Validasi Tahap 1.
+                                        Tervalidasi
                                     @elseif($surat->statusSurat == 2)
-                                        Tervalidasi.
+                                        Revisi
                                     @elseif($surat->statusSurat == 4)
                                         Non-Aktif.
                                     @else
@@ -88,8 +88,30 @@
                                     @endif
                                 </td>
                                 <td>
+
                                      <div class="row" style="padding-bottom: 5px">
-                                    <div class="col-xs-6" style="padding: 0px 9px 0px 10px">
+                                        <div class="col-xs-6" style="padding: 0px 9px 0px 10px">
+                                            <a href="{{route('get-securityValidasiSurat',['id' => $surat->id])}}">
+                                                <button type="submit"
+                                                        class="btn btn-success pull-right btn-block btn-sm validasi" value="{{$surat->nomorSurat}}"
+                                                        data-toogle="tooltip" data-placement="bottom"  title="Validasi Surat">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-6" style="padding: 0px 12px 0px 7px">
+                                            <a href="{{route('get-securityRevisiSuratKeluar',['id' => $surat->id])}}')}}">
+                                                <button type="submit"
+                                                        class="btn btn-danger pull-right btn-block btn-sm batal"
+                                                        value="{{$surat->nomorSurat}}"
+                                                        data-toogle="tooltip" data-placement="bottom"  title="Batalkan Surat">
+                                                    <i class="fa fa-close"></i>
+                                                </button>
+                                            </a>
+                                        </div>
+                            
+                        
+                                     <div class="col-xs-11" style="padding: 4px 6px 0px 10px">
                                         <a href="{{route('get-securityDetailSuratKeluar',['id' => $surat->id])}}">
                                             <button type="submit"
                                                     class="btn btn-info pull-right btn-block btn-sm"

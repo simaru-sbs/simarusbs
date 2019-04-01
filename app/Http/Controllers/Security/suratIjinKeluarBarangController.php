@@ -14,6 +14,7 @@ use App\LokasiSuratKeluar;
 use App\LogSuratKeluar;
 use App\BarangKeluar;
 use App\LampiranSuratKeluar;
+use App\LogBarangKeluar;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -23,11 +24,7 @@ class suratijinKeluarbarangcontroller extends Controller
 
 
  	  $lokasisurat = LokasiSuratKeluar::all();
- 	  $surats = SuratKeluarBarang::where([
-          
-           'statusSurat' => 0,
-          
-        ])->get();
+ 	  $surats = SuratKeluarBarang::all();
       
         return view('Security/lihatSuratKeluar',compact('surats'));
     }
@@ -254,6 +251,99 @@ class suratijinKeluarbarangcontroller extends Controller
         return view('Security/cetakSuratKeluar', compact('surat', 'angka', 'tahun','tanggal', 'arrayL1', 'arrayL2', 'arrayL3','arrayK1', 'arrayK2', 'arrayK3','arrayP1','arrayP2','arrayP3','arrayN1','arrayN2','arrayN3','arrayZ1','arrayZ2','arrayZ3'));
 
     }
+
+
+
+
+
+     public function validasiSurat($id)
+    {
+ $lokasi = Lokasi::where([
+            'id' => $id,
+        ])->get()->first();
+        $surat = SuratKeluarBarang::where([
+            'id' => $id
+        ])->get()->first();
+
+        if(!$surat){
+            return redirect()->route('get-securityIndexLihatSuratKeluar')
+                ->with([
+                    'status' => 'danger',
+                    'message' => 'SIMARU dengan ID tersebut tidak ditemukan!'
+                ]);
+        }
+
+
+        $tahun = substr($surat->nomorSurat, -4);
+        $angka = str_replace($tahun, '', $surat->nomorSurat);
+
+        if ($surat->statusSurat != 1 ) {
+            $surat->update([
+                'statusSurat' => 1,
+            
+            ]);
+            return redirect()->back()
+                ->with([
+                    'status' => 'success',
+                    'message' => 'SIMARU Tel. ' . $angka . '/SIMARU/SBS/' . $tahun . ' berhasil divalidasi!'
+                ]);
+        }
+
+         LogBarangKeluar::create([
+                'tanggalValidasi' => date('Y-m-d'),
+
+                'idSuratKeluar' => $surat->id,
+                'idSecurity' => auth('user')->user()->id,
+
+                'idLokasi' => auth('user')->user()->idLokasi,
+            ]);
+
+
+        return redirect()->back()
+            ->with([
+                'status' => 'warning',
+                'message' => 'SIMARU Tel. ' . $angka . '/SIMARU/SBS/' . $tahun . ' sudah divalidasi!'
+            ]);
+    }
+
+    public function batalkanValidasiSurat($id)
+    {
+        $surat = SuratKeluarBarang::where([
+            'id' => $id
+        ])->get()->first();
+
+        if(!$surat){
+            return redirect()->route('get-securityIndexLihatSuratKeluar')
+                ->with([
+                    'status' => 'danger',
+                    'message' => 'SIMARU dengan ID tersebut tidak ditemukan!'
+                ]);
+        }
+
+
+        $tahun = substr($surat->nomorSurat, -4);
+        $angka = str_replace($tahun, '', $surat->nomorSurat);
+
+        if ($surat->statusSurat == 2) {
+            return redirect()->back()
+                ->with([
+                    'status' => 'warning',
+                    'message' => 'SIMARU Tel. ' . $angka . '/SIMARU/SBS/' . $tahun . ' sudah ditandai sebagai surat revisi!'
+                ]);
+        }
+
+        $surat->update([
+            'statusSurat' => 2,
+
+        ]);
+
+        return redirect()->back()
+            ->with([
+                'status' => 'warning',
+                'message' => 'SIMARU Tel. ' . $angka . '/SIMARU/SBS/' . $tahun . ' validasi dibatalkan atau direvisi ulang!'
+            ]);
+    }
+
 
 
     public function checkTimes($tanggalMulai, $tanggalBerakhir, $tanggalSekarang)

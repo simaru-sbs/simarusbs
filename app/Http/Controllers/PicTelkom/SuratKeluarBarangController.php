@@ -138,7 +138,7 @@ class SuratKeluarBarangController extends Controller
                     'perusahaan' => $request->perusahaan,
                     'jabatan' => ucwords($request->jabatan),
                     'perihal' => ucwords($request->perihal),
-                    'validate' => 0,
+      
                     'statusSurat' => 0,
                     'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
                
@@ -152,8 +152,7 @@ class SuratKeluarBarangController extends Controller
                     'perusahaan' => $request->perusahaan,
                     'perihal' => ucwords($request->perihal),
                     'jabatan' => ucwords($request->jabatan),
-                    'validate' => 0,
-                    'statusSurat' => 0,
+                                   'statusSurat' => 0,
                     'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
     
                     'tanggal' => $request->tanggal,
@@ -167,7 +166,7 @@ class SuratKeluarBarangController extends Controller
                 'perusahaan' => $request->perusahaan,
                 'perihal' => ucwords($request->perihal),
                 'jabatan' => ucwords($request->jabatan),
-                'validate' => 0,
+              
                 'statusSurat' => 0,
                 'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
                 
@@ -298,7 +297,7 @@ class SuratKeluarBarangController extends Controller
             'perusahaan' => $request->perusahaan,
             'jabatan' => ucwords($request->jabatan),
             'perihal' => ucwords($request->perihal),
-            'validate' => 0,
+          
             'statusSurat' => 0,
             'keterangan' => ($request->keterangan ? $request->keterangan : '-' ),
          
