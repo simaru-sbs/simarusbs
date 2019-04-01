@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2019 at 05:16 AM
+-- Generation Time: Apr 01, 2019 at 04:38 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -66,17 +66,7 @@ CREATE TABLE `daftarbarang` (
 --
 
 INSERT INTO `daftarbarang` (`id`, `idSuratKeluar`, `namaBarang`, `merek`, `serialNumber`, `created_at`, `updated_at`) VALUES
-(4, 119, 'modul', 'huawei', '121212', '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
-(6, 120, 'modul', 'huawei', '121212', '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
-(7, 120, 'modul', 'huawei', '121212', '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
-(8, 121, 'modul lpu51', 'huawei', '123456', '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
-(9, 121, 'modul lpu240', 'huawei', '78910', '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
-(10, 122, 'MODUL', 'HUAWEI', '1213242', '2019-03-21 02:26:27', '2019-03-21 02:26:27'),
-(11, 123, 'modul', 'HUWEI', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
-(12, 123, 'modul', 'asus', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
-(13, 123, 'modul', 'acer', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
-(14, 123, 'modul', 'toshiba', '12345', '2019-03-22 04:05:04', '2019-03-22 04:05:04'),
-(15, 123, 'modul', 'hp', '12345', '2019-03-22 04:05:05', '2019-03-22 04:05:05');
+(36, 166, 'modul', 'huawei', '12121', '2019-03-28 02:48:05', '2019-03-28 02:48:05');
 
 -- --------------------------------------------------------
 
@@ -194,20 +184,7 @@ CREATE TABLE `lampiransuratkeluar` (
 --
 
 INSERT INTO `lampiransuratkeluar` (`id`, `path`, `pathUri`, `namaFile`, `idSuratKeluar`, `created_at`, `updated_at`) VALUES
-(31, 'lampiransuratkeluar/8w52NzevKatOJ8Xt42ezqC81bW9XqrO1uw8zKC0G.pdf', 'uratkeluar/8w52NzevKatOJ8Xt42ezqC81bW9XqrO1uw8zKC0G.pdf', 'SIM', 110, '2019-03-19 08:17:20', '2019-03-19 08:17:20'),
-(32, 'lampiransuratkeluar/btFqpYarYgWbmNA0y5Zt6muy4UvaBrOOerJTvWKQ.pdf', 'uratkeluar/btFqpYarYgWbmNA0y5Zt6muy4UvaBrOOerJTvWKQ.pdf', 'SIM', 111, '2019-03-19 08:20:09', '2019-03-19 08:20:09'),
-(33, 'lampiransuratkeluar/MvmYK53Axe7gfC7qfIDOIHlyIHT15rlKP4UNDsPQ.pdf', 'uratkeluar/MvmYK53Axe7gfC7qfIDOIHlyIHT15rlKP4UNDsPQ.pdf', 'SIM', 112, '2019-03-20 01:25:32', '2019-03-20 01:25:32'),
-(34, 'lampiransuratkeluar/VOBrySkKL8u8JX9ChHpM17qfYxTAxWcKD07asall.pdf', 'uratkeluar/VOBrySkKL8u8JX9ChHpM17qfYxTAxWcKD07asall.pdf', 'SIM', 113, '2019-03-20 01:26:45', '2019-03-20 01:26:45'),
-(35, 'lampiransuratkeluar/EXe2H8012j2EB5bKa4KEsRmn8guHhFwA2C15zCFX.pdf', 'uratkeluar/EXe2H8012j2EB5bKa4KEsRmn8guHhFwA2C15zCFX.pdf', 'SIM', 114, '2019-03-20 01:37:33', '2019-03-20 01:37:33'),
-(36, 'lampiransuratkeluar/RxMDod9lyc9dg4HIPWMttFxF5knMiAy8KgkDq73H.pdf', 'uratkeluar/RxMDod9lyc9dg4HIPWMttFxF5knMiAy8KgkDq73H.pdf', 'SIM', 115, '2019-03-20 01:57:04', '2019-03-20 01:57:04'),
-(37, 'lampiransuratkeluar/VcnbgYGa4PGm1glUMKfLm5VlxYusEV3mjcbQu1d9.pdf', 'uratkeluar/VcnbgYGa4PGm1glUMKfLm5VlxYusEV3mjcbQu1d9.pdf', 'SIM', 116, '2019-03-20 02:02:59', '2019-03-20 02:02:59'),
-(38, 'lampiransuratkeluar/ATNH7Og6hthTbc7hNa0Ny9pXCUxdyDOHB1CCXSRJ.pdf', 'uratkeluar/ATNH7Og6hthTbc7hNa0Ny9pXCUxdyDOHB1CCXSRJ.pdf', 'SIM', 117, '2019-03-20 02:05:04', '2019-03-20 02:05:04'),
-(39, 'lampiransuratkeluar/jqQ6QU5J1Xw6QDHjAkUq88cFvW2VaGl62fTiglGh.pdf', 'uratkeluar/jqQ6QU5J1Xw6QDHjAkUq88cFvW2VaGl62fTiglGh.pdf', 'SIM', 118, '2019-03-20 02:45:58', '2019-03-20 02:45:58'),
-(40, 'lampiransuratkeluar/5C1KaMeHiFMSOGrKgA8uYG4HnqhJlDMWUZWlHBF5.pdf', 'uratkeluar/5C1KaMeHiFMSOGrKgA8uYG4HnqhJlDMWUZWlHBF5.pdf', 'SIM', 119, '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
-(41, 'lampiransuratkeluar/nNNeCwcJ6BqGhTFlMA4Pw87c3sV3A8mdQr1Id778.pdf', 'uratkeluar/nNNeCwcJ6BqGhTFlMA4Pw87c3sV3A8mdQr1Id778.pdf', 'SIM', 120, '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
-(42, 'lampiransuratkeluar/dziALfIeI9liiYVGZbACvTiNEDEyKLbsaFu9IxZQ.pdf', 'uratkeluar/dziALfIeI9liiYVGZbACvTiNEDEyKLbsaFu9IxZQ.pdf', 'SURAT IJIN', 121, '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
-(43, 'lampiransuratkeluar/1u741TQPc7NG1g5HBGKzLW1PmQ9s7CfLx6GuzszP.pdf', 'uratkeluar/1u741TQPc7NG1g5HBGKzLW1PmQ9s7CfLx6GuzszP.pdf', 'SURAT IJIN', 122, '2019-03-21 02:26:27', '2019-03-21 02:26:27'),
-(44, 'lampiransuratkeluar/92yIOsWBKpj0cH8JgzKaGMhMz5VmNfnms4IVq0Rl.pdf', 'uratkeluar/92yIOsWBKpj0cH8JgzKaGMhMz5VmNfnms4IVq0Rl.pdf', 'SURAT IJIN', 123, '2019-03-22 04:05:03', '2019-03-22 04:05:03');
+(65, 'lampiransuratkeluar/pGwDCvS8cGofUMIpCk7Fik6s25DPHCbSaatT2jZS.pdf', 'uratkeluar/pGwDCvS8cGofUMIpCk7Fik6s25DPHCbSaatT2jZS.pdf', '-', 166, '2019-03-28 02:48:04', '2019-03-28 02:48:04');
 
 -- --------------------------------------------------------
 
@@ -480,20 +457,7 @@ CREATE TABLE `lokasisuratkeluar` (
 --
 
 INSERT INTO `lokasisuratkeluar` (`id`, `idLokasi`, `idSuratKeluar`, `created_at`, `updated_at`) VALUES
-(2, 2, 110, '2019-03-19 08:17:20', '2019-03-19 08:17:20'),
-(3, 2, 111, '2019-03-19 08:20:09', '2019-03-19 08:20:09'),
-(4, 2, 112, '2019-03-20 01:25:33', '2019-03-20 01:25:33'),
-(5, 2, 113, '2019-03-20 01:26:45', '2019-03-20 01:26:45'),
-(6, 2, 114, '2019-03-20 01:37:33', '2019-03-20 01:37:33'),
-(7, 2, 115, '2019-03-20 01:57:04', '2019-03-20 01:57:04'),
-(8, 2, 116, '2019-03-20 02:02:59', '2019-03-20 02:02:59'),
-(9, 2, 117, '2019-03-20 02:05:04', '2019-03-20 02:05:04'),
-(10, 2, 118, '2019-03-20 02:45:58', '2019-03-20 02:45:58'),
-(11, 2, 119, '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
-(12, 2, 120, '2019-03-20 06:22:55', '2019-03-20 06:22:55'),
-(13, 2, 121, '2019-03-21 01:41:21', '2019-03-21 01:41:21'),
-(14, 10, 122, '2019-03-21 02:26:27', '2019-03-21 02:26:27'),
-(15, 9, 123, '2019-03-22 04:05:03', '2019-03-22 04:05:03');
+(38, 2, 166, '2019-03-29 02:13:21', '2019-03-29 02:13:21');
 
 -- --------------------------------------------------------
 
@@ -2392,6 +2356,7 @@ CREATE TABLE `suratkeluarbarang` (
   `nomorSurat` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kepada` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `nik` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `perusahaan` varchar(50) NOT NULL,
   `jabatan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `perihal` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `validate` tinyint(4) NOT NULL,
@@ -2407,21 +2372,8 @@ CREATE TABLE `suratkeluarbarang` (
 -- Dumping data for table `suratkeluarbarang`
 --
 
-INSERT INTO `suratkeluarbarang` (`id`, `nomorSurat`, `kepada`, `nik`, `jabatan`, `perihal`, `validate`, `statusSurat`, `keterangan`, `hari`, `tanggal`, `created_at`, `updated_at`) VALUES
-(110, '12019', 'SAIFUL RIZAL', '089', 'Engineer', 'Surat Ijin Membawa Barang Keluar', 0, 0, 'hati hati', '', '0000-00-00', '2019-03-19 08:17:20', '2019-03-19 08:17:20'),
-(111, '22019', 'SAIFUL', '12121', 'Engineer', 'Surat Ijin Keluar Barang', 0, 0, 'tidak ada', '', '0000-00-00', '2019-03-19 08:20:09', '2019-03-19 08:20:09'),
-(112, '32019', 'M SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin', 0, 0, '-', '', '0000-00-00', '2019-03-20 01:25:32', '2019-03-20 01:25:32'),
-(113, '42019', 'M SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin', 0, 0, '-', '', '0000-00-00', '2019-03-20 01:26:45', '2019-03-20 01:26:45'),
-(114, '52019', 'M SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin', 0, 0, '-', '', '0000-00-00', '2019-03-20 01:37:33', '2019-03-20 01:37:33'),
-(115, '62019', 'SAIFUL RIZAL', '12345', 'Asman', 'Surat Ijin Membawa Barang', 0, 0, 'sim', '', '0000-00-00', '2019-03-20 01:57:04', '2019-03-20 01:57:04'),
-(116, '72019', 'SAIFUL RIZAL', 'saiful rizal', 'Sim', 'Surat Ijin Membawa Barang', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:02:59', '2019-03-20 02:02:59'),
-(117, '82019', 'SAIFUL RIZAL', 'saiful rizal', 'Sim', 'Surat Ijin Membawa Barang', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:05:03', '2019-03-20 02:05:03'),
-(118, '92019', 'SAIFUL', '12133', 'Engineer', 'Surat Ijin Keluar', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:45:58', '2019-03-20 02:45:58'),
-(119, '102019', 'SAIFUL', '12133', 'Engineer', 'Surat Ijin Keluar', 0, 0, '-', '', '0000-00-00', '2019-03-20 02:50:22', '2019-03-20 02:50:22'),
-(120, '112019', 'SAIFUL RIZAL', '12121', 'Manager', 'Surat Ijin', 0, 0, '-', 'Jumat', '2019-03-13', '2019-03-20 06:22:54', '2019-03-20 06:22:54'),
-(121, '122019', 'SAIFUL RIZAL', '12345', 'Engineer', 'Surat Ijin Mengeluarkan Barang Modul Lpu51', 0, 0, 'barang ini akan direlokasi ke jakarta', 'Senin', '2019-03-18', '2019-03-21 01:41:20', '2019-03-21 01:41:20'),
-(122, '132019', 'SAIFUL RIZAL', '12345', 'ENGINEER', 'SURAT IJIN KELUAR BARANG', 0, 0, '-', 'Selasa', '2019-03-26', '2019-03-21 02:26:26', '2019-03-21 02:26:26'),
-(123, '142019', 'M SAIFUL RIZAL', '12345', 'Manager', 'Surat Ijin Untuk Membawa Barang', 0, 0, '-', 'Senin', '2019-03-25', '2019-03-22 04:05:02', '2019-03-22 04:05:02');
+INSERT INTO `suratkeluarbarang` (`id`, `nomorSurat`, `kepada`, `nik`, `perusahaan`, `jabatan`, `perihal`, `validate`, `statusSurat`, `keterangan`, `hari`, `tanggal`, `created_at`, `updated_at`) VALUES
+(166, '22019', 'M SAIFUL RIZAL', '31160702', 'huawei', 'Manager', 'Surat Ijin Membawa Barang', 0, 0, '-', 'Senin', '2019-03-25', '2019-03-28 02:48:04', '2019-03-28 02:48:04');
 
 -- --------------------------------------------------------
 
@@ -2631,12 +2583,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nik`, `nama`, `username`, `password`, `kontak`, `role`, `statusUser`, `idLokasi`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '401519', 'Sigit Widagdo', 'adminsbs', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'admin', 1, 1, '5mQiWByM3de1fPMnQROiqrDh7cBf7HxWGsocrgWWRgvl1bmNtlo3Ye1kwZZy', NULL, NULL),
+(1, '401519', 'Sigit Widagdo', 'adminsbs', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'admin', 1, 1, 'nKvxeifPe2zYj9KyWfYSRGVDHwh27TWphXE6gsyVWWKWZ4MBSunBWMtf0wFV', NULL, NULL),
 (2, '-', 'GM WITEL', 'gmwitel', '$2y$10$mZK0j/lhiSs9HRbZ2BMXru3wCKQQe/fVbqlEON3.7wgJxEDYLccha', '-', 'gm', 1, 1, 'Xn7gvncCs8DCJPmnY6KL1d7PCn2a6n0XE5JKWT8bhGvB5zWSntpye3PbI0Ei', NULL, '2017-09-13 05:14:07'),
 (3, '-', 'MGR SAS', 'mgrsas', '$2y$10$kGgkq/5i5EBBoRGP3Vuow.fuozKkSgYx7IRiqA71mWlZnT9MxUTOS', '-', 'sas', 1, 1, 'cgix6tLwNlvjvSWNKv24KY4zYkXa2ScuI1lmOonPuNL7bViMr3ohtQrqTVcZ', NULL, '2017-09-13 05:12:58'),
-(4, '870022', 'Havea Pertiwi', '870022', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'validator', 1, 1, '1tRIdpfRcQURgvNnYfAqlAI0YbOevbDE9zW81AuBngc8rhKpFopVaN4EhfZG', NULL, NULL),
+(4, '870022', 'Havea Pertiwi', '870022', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'validator', 1, 1, 'X2caZAtFwJSgnsph7aLqmcSaUJwCb3T9BqCatmoRQC0XrVf7F3BkmizyYnIT', NULL, NULL),
 (5, '640986', 'Achmad Muslich', '640986', '$2y$12$HOqxIrsPWYUnNQ/QN0.u/O7L45u/FGOmA5etVl9kzdsj3zD.BhB/W', '-', 'supervalidator', 1, 1, 'f6EM2NeSOHT1dqVkMJ1ieIgpXmw99llwJR9zZ4BfeHX8YTlBbeWyuStUoOos', NULL, NULL),
-(6, '20000', 'RKTTES', 'RKTTES', '$2y$10$V3UBVvHxf7kxYO3kS0fEMujW8oBrupW4FNjrnTgYrmSjjM.GoQmR2', '-', 'security', 1, 2, 'pE0ttCt6b7YcSBh9I3YTmVBosVzRacJVhsu0G1TglPITg6k4AnLXp4BnC9lQ', '2018-11-23 01:36:14', '2018-11-23 01:55:23'),
+(6, '20000', 'RKTTES', 'RKTTES', '$2y$10$V3UBVvHxf7kxYO3kS0fEMujW8oBrupW4FNjrnTgYrmSjjM.GoQmR2', '-', 'security', 1, 2, 'CzBzEz1tn10iHQnRBixPnDhluKBAihuszqNMRin1SliZVfLxAYSxvzuiJ36t', '2018-11-23 01:36:14', '2018-11-23 01:55:23'),
 (7, '20001', 'FERDIYANTO', 'Frediyanto', '$2y$10$6TNdy3dUGI51C1nxoKFs2ONkNNkl0tGMEtiW/0tqrN8GCqBQbaQX.', '082132398752', 'security', 1, 2, 'Gj2xjt3F7nm0GUAcSXna1NpdW9xPq98rh9qUlsQ3dqStOLHR26yKHLfk3cWT', '2018-11-23 01:37:16', '2018-11-23 01:55:26'),
 (8, '20002', 'GUNARTO', 'gunarto', '$2y$10$v1cMaV8oBu8S9ZUYNXNLee.FZGPFuiL1iR4vczvRJrc6kVfIg4.bK', '0813-5847-8429', 'security', 1, 2, '0R4CPuRZxe9I6HanZFsN7EQbE8QuXie4a39u9RMFYRbuct9XSFEOj51nYfTi', '2018-11-23 01:40:11', '2018-11-23 01:55:28'),
 (9, '20003', 'SUYANI', 'suyani', '$2y$10$NiafdEkbam9BEOooWFDJU.todFYRKVTrYZyaHjsZpsMg/b5C2ZuVq', '0822-3121-6914', 'security', 1, 2, 'w0AMZeVzo649722LCN3z3adVAuwC9LK73hopTdhKpHjm8STANGTXYzqlGpFI', '2018-11-23 01:44:01', '2018-11-23 01:55:31'),
@@ -2647,7 +2599,7 @@ INSERT INTO `user` (`id`, `nik`, `nama`, `username`, `password`, `kontak`, `role
 (14, '20008', 'BUDI SALMAN', 'budisalman', '$2y$10$BUhSYlw7x1zToeM3wpXVwes.N3/u9pb3d8OqElrInRjartE4CvaJy', '0851-0735-0333', 'security', 1, 2, 'ZCqupE9rYFdCHtmKbO3fL3M8W0UBcNrkw73gtAiuMK7OaE346dmXloS1kKeo', '2018-11-23 01:49:57', '2018-11-23 01:55:48'),
 (15, '20009', 'SUHARTO', 'suharto', '$2y$10$8cAMafy9eGEv8NdG2aU7deJZqERYCN35Sd2wkByQIajlP70fSq2NC', '0851-0988-2001', 'security', 1, 2, 'qYXxvKsOfVSFqCNXAZe51d2SKTxfMA6sEBuglTeeJMCTologtrDc05Cbu1yR', '2018-11-23 01:51:06', '2018-11-23 01:55:52'),
 (16, '20010', 'DIMAS', 'dimas01', '$2y$10$XomCBoqhvXab5ivaHh80cuyc8HkJkgEqDHPNeYlBBFQwz5CKGQd4e', '-', 'security', 1, 2, NULL, '2018-11-23 01:52:26', '2018-11-23 01:55:20'),
-(17, '21000', 'TPOTES', 'TPOTES', '$2y$10$GZITGp.jgEAYHdi1RnvCg.m6Rp4K.7U/ADPokIiPxNkMFtxrgWgB.', '-', 'security', 1, 9, '6TpAOqwLvkfhIA2QmUwwqmBpthF7Iyj0u0VdzSVo2d4tI64Jl4QbWAOFjbZ0', '2018-11-23 01:59:01', '2018-11-23 02:07:41'),
+(17, '21000', 'TPOTES', 'TPOTES', '$2y$10$GZITGp.jgEAYHdi1RnvCg.m6Rp4K.7U/ADPokIiPxNkMFtxrgWgB.', '-', 'security', 1, 9, 'QNvOMkGBg7JXEphLs8Tos444sTvzr1R9Z38cQggBO1u4thlxmlcgp7aV9zMp', '2018-11-23 01:59:01', '2018-11-23 02:07:41'),
 (18, '21001', 'SUPRIYADI', 'supriyadi', '$2y$10$7qfCjVegClgmQf75EJoCZuWJ3ZK41RDiv8L4oaRGiA1pAEhc.DKNK', '0851-0085-6890', 'security', 1, 9, NULL, '2018-11-23 02:02:24', '2018-11-23 02:07:46'),
 (19, '21002', 'FIRMAN', 'firman', '$2y$10$L0PfUOD5p/3BkuTFCsLoY.yhAYVFn5lrY/OoLKmzbFqgvPlciZSju', '0851-0062-3819', 'security', 1, 9, NULL, '2018-11-23 02:03:12', '2018-11-23 02:07:51'),
 (20, '21003', 'ANJAS', 'anjas01', '$2y$10$ZNGfFfHMUDDb0ZS60V/z4uELJD.ErW3W2SjgfcDcSHSoaUEKnFaJm', '081332913901', 'security', 1, 9, NULL, '2018-11-23 02:04:08', '2018-11-23 02:07:56'),
@@ -2708,7 +2660,7 @@ INSERT INTO `user` (`id`, `nik`, `nama`, `username`, `password`, `kontak`, `role
 (75, '631064', 'TOFAN HIDAYAT', '631064', '$2y$10$IzzHRlf7SvWujuPEian9yuKsbWTJyNXqjxuYGJHp1LHgjuQbhlB9K', '0851-0099-6635', 'picTelkom', 1, 1, 'yrFMg6ptBH4BKmaF7CeKB6LODEbRbcGsQDfZNXLs1USCcHoEfTXdRPV2L3gs', '2019-01-14 03:46:55', '2019-01-14 03:47:14'),
 (76, '630126', 'SUDIRO', '630126', '$2y$10$S1KxYq6ODzDTrPtZV17Cmet1MhHNnFqog.FlmonLe8jJWiqPx6JRW', '0851-0591-3476', 'picTelkom', 1, 1, NULL, '2019-01-15 04:43:34', '2019-01-15 04:44:04'),
 (77, '31007', 'ARIS JIMAN SAPUTRO', 'aris19', '$2y$10$AnbnshO7QANlxqlaohu4mOODa5twzSoGXgEaFAonCs/f5xc6GfahW', '0851-0600-1919', 'security', 1, 4, 'FlBWa21xX834ErdTAM1EQCgG7IUlEJRRQX87lD0pSyxfLeg5HP0bjX1we7U6', '2019-01-24 02:11:33', '2019-01-24 02:11:58'),
-(78, '920268', 'Natanael Pandapotan', '920268', '$2y$10$qK2IocMATNkyBEjhmJSS2uhijs1mHj5sTkmXfl5tGiO8/s/MKrDUG', '081310108341', 'picTelkom', 1, 1, 'dGctCRhuEURS8NhhUxVB4bGekAZftfjmcv8BFKlQMRVvh1R1XRvzAQarpWmO', '2019-02-18 03:24:12', '2019-03-13 02:31:17');
+(78, '920268', 'Natanael Pandapotan', '920268', '$2y$10$qK2IocMATNkyBEjhmJSS2uhijs1mHj5sTkmXfl5tGiO8/s/MKrDUG', '081310108341', 'picTelkom', 1, 1, 'dn9lYssKog5LIWq7ISdPvGFFQ1haIrQLUFa6XcSfumKBNdwtaZp7xHkNjmaM', '2019-02-18 03:24:12', '2019-03-13 02:31:17');
 
 -- --------------------------------------------------------
 
@@ -2805,8 +2757,7 @@ CREATE TABLE `waspangsuratkeluar` (
 --
 
 INSERT INTO `waspangsuratkeluar` (`id`, `idPicTelkom`, `idSuratKeluar`, `created_at`, `updated_at`) VALUES
-(1, 17, 122, '2019-03-21 02:26:26', '2019-03-21 02:26:26'),
-(2, 20, 123, '2019-03-22 04:05:03', '2019-03-22 04:05:03');
+(57, 10, 166, '2019-03-29 02:13:21', '2019-03-29 02:13:21');
 
 --
 -- Indexes for dumped tables
@@ -2994,7 +2945,7 @@ ALTER TABLE `beritasimaru`
 -- AUTO_INCREMENT for table `daftarbarang`
 --
 ALTER TABLE `daftarbarang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `forwarding`
 --
@@ -3009,7 +2960,7 @@ ALTER TABLE `lampiran`
 -- AUTO_INCREMENT for table `lampiransuratkeluar`
 --
 ALTER TABLE `lampiransuratkeluar`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 --
 -- AUTO_INCREMENT for table `logmasuk`
 --
@@ -3029,7 +2980,7 @@ ALTER TABLE `lokasikerja`
 -- AUTO_INCREMENT for table `lokasisuratkeluar`
 --
 ALTER TABLE `lokasisuratkeluar`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -3074,7 +3025,7 @@ ALTER TABLE `pictelkom`
 -- AUTO_INCREMENT for table `suratkeluarbarang`
 --
 ALTER TABLE `suratkeluarbarang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 --
 -- AUTO_INCREMENT for table `suratmasuk`
 --
@@ -3099,7 +3050,7 @@ ALTER TABLE `waspang`
 -- AUTO_INCREMENT for table `waspangsuratkeluar`
 --
 ALTER TABLE `waspangsuratkeluar`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- Constraints for dumped tables
 --
