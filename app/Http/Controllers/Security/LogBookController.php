@@ -4,16 +4,40 @@ namespace App\Http\Controllers\Security;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RegisterController;
 use App\LogMasuk;
+use App\SuratKeluarBarang;
 use Illuminate\Http\Request;
 
 class LogBookController extends Controller
 {
     public function indexLogBook(){
-        return view('Security/indexLogBook');
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
+        return view('Security/indexLogBook',compact('content'));
 
     }
 
     public function lihatLogBook(Request $request){
+
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $logs = LogMasuk::where([
            'idLokasi' => auth('user')->user()->idLokasi,
             'statusLog' => 1,
@@ -37,10 +61,22 @@ class LogBookController extends Controller
 
         $logs = collect($raw)->sortBy('tanggal');
 
-        return view('Security/logBook',compact('logs'));
+        return view('Security/logBook',compact('logs','content'));
     }
 
         public function logMelebihiWaktu(Request $request){
+
+             $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $logs = LogMasuk::where([
            'idLokasi' => auth('user')->user()->idLokasi,
             'statusLog' => 2,
@@ -54,12 +90,23 @@ class LogBookController extends Controller
             };
         }
 
-        return view('Security/logBelumTerselesaikan',compact('logs'));
+        return view('Security/logBelumTerselesaikan',compact('logs','content'));
     }
 
 
      
     public function keluarTervalidasi(Request $request){
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $logs = LogMasuk::where([
            'idLokasi' => auth('user')->user()->idLokasi,
             'statusLog' => 1,
@@ -69,7 +116,7 @@ class LogBookController extends Controller
         date_default_timezone_set('Asia/Jakarta');
         $raw = array();
 
-        return view('Security/logBook',compact('logs'));
+        return view('Security/logBook',compact('logs','content'));
     }
 
     public function checkTimes($tanggalMulai, $tanggalBerakhir, $tanggalSekarang)

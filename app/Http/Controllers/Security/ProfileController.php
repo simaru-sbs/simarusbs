@@ -7,15 +7,28 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\SuratKeluarBarang;
 
 class ProfileController extends Controller
 {
+
     public function indexProfile(){
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $user = User::where([
             'id' => auth('user')->user()->id
         ])->get()->first();
 
-        return view('Security/editProfile', compact('user'));
+        return view('Security/editProfile', compact('user','content'));
     }
 
     public function editProfile(Request $request){

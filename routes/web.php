@@ -346,6 +346,8 @@ Route::group(['middleware' => ['autentikasi']], function () {
         Route::get('/validasisurat/{id}', ['uses' => 'SuratIjinKeluarBarangController@validasiSurat', 'as' => 'get-securityValidasiSurat']);
         Route::get('/batalkanvalidasisurat/{id}', ['uses' => 'SuratIjinKeluarBarangController@batalkanValidasiSurat', 'as' => 'get-securityRevisiSuratKeluar']);
 
+        Route::get('/indexLihatSuratKeluarHariIni', ['uses' => 'suratIjinKeluarBarangController@indexLihatSuratKeluarHariIni', 'as' =>'get-securityIndexLihatSuratKeluarHariIni']);
+
 
         Route::get('/cariPicMitra', ['uses' => 'SuratIjinMasukController@indexCariPic', 'as' =>'get-securityIndexCariPicMitra']);
         Route::get('/hasilPicMitra', ['uses' => 'SuratIjinMasukController@CariPic', 'as' =>'get-securityCariPicMitra']);

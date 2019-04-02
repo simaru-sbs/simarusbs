@@ -5,17 +5,43 @@ namespace App\Http\Controllers\Security;
 use App\Http\Controllers\Controller;
 use App\BeritaSimaru;
 use Illuminate\Http\Request;
+use App\SuratKeluarBarang;
 
 class beritaSimaruController extends Controller
 {
 
     public function indexBuatBerita()
+
     {
-        return view('Security/Berita/buatBerita');
+
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
+        return view('Security/Berita/buatBerita', compact('content'));
     }
 
     public function indexEditBerita($id)
     {
+
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $berita = BeritaSimaru::where([
             'id' => $id
         ])->get()->first();
@@ -27,13 +53,24 @@ class beritaSimaruController extends Controller
                     'message' => 'Berita dengan ID tersebut tidak ditemukan!'
                 ]);
         }
-        return view('Security/Berita/editBerita', compact('berita'));
+        return view('Security/Berita/editBerita', compact('berita','content'));
     }
 
     public function lihatBerita()
     {
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $beritas = BeritaSimaru::all();
-        return view('Security/Berita/lihatBerita', compact('beritas'));
+        return view('Security/Berita/lihatBerita', compact('beritas','content'));
     }
 
     public function buatBerita(Request $request)

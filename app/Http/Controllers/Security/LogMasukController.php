@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
 use App\Petugas;
+use App\SuratKeluarBarang;
 use App\LogMasuk;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,17 @@ class LogMasukController extends Controller
 {
     public function indexExtendLog()
     {
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         date_default_timezone_set('Asia/Jakarta');
 
         $logs = LogMasuk::where([
@@ -18,7 +30,7 @@ class LogMasukController extends Controller
             ['idLokasi', '=', auth('user')->user()->idLokasi],
         ])->get();
 
-        return view('Security/extendLog', compact('logs'));
+        return view('Security/extendLog', compact('logs','content'));
     }
 
     public function petugasMasuk($id)
@@ -146,6 +158,17 @@ class LogMasukController extends Controller
 
     public function logBelumTerselesaikan()
     {
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         date_default_timezone_set('Asia/Jakarta');
         $logs = LogMasuk::where([
             ['statusLog', '<>', 1],
@@ -153,11 +176,22 @@ class LogMasukController extends Controller
             ['idLokasi', '=', auth('user')->user()->idLokasi]
         ])->get();
 
-        return view('Security/logBelumTerselesaikan', compact('logs'));
+        return view('Security/logBelumTerselesaikan', compact('logs','content'));
     }
 
     public function indexBeriExtend($id)
     {
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
 
         $log = LogMasuk::where([
             'id' => $id,
@@ -179,7 +213,7 @@ class LogMasukController extends Controller
                 ]);
         }
 
-        return view('Security/keteranganExtend', compact('log'));
+        return view('Security/keteranganExtend', compact('log','content'));
     }
 
     public function beriExtend(Request $request)
@@ -233,6 +267,17 @@ class LogMasukController extends Controller
 
     public function lihatPesanExtend($id)
     {
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $log = LogMasuk::where([
             ['id' ,'=', $id],
             ['pesan', '<>' , '-']
@@ -246,7 +291,7 @@ class LogMasukController extends Controller
                 ]);
         }
 
-        return view('Security/lihatPesanExtend', compact('log'));
+        return view('Security/lihatPesanExtend', compact('log','content'));
     }
 
     public function hapusLogMasuk($id)

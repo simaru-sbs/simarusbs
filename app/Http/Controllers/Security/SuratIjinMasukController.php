@@ -6,22 +6,57 @@ use App\Http\Controllers\Controller;
 use App\LokasiKerja;
 use App\Petugas;
 use App\SuratMasuk;
+use App\SuratKeluarBarang;
 use Illuminate\Http\Request;
 
 class SuratIjinMasukController extends Controller
 {
     public function indexCariPic()
+
     {
-        return view('Security/pencarianBerdasarkanNama');
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
+        return view('Security/pencarianBerdasarkanNama',compact('content'));
     }
 
     public function indexNoSimaru()
     {
-        return view('Security/pencarianBerdasarkanSimaru');
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
+        return view('Security/pencarianBerdasarkanSimaru',compact('content'));
     }
 
     public function cariPic(Request $request)
     {
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         if($request->nama == ''){
             return redirect()->route('get-securityIndexCariPicMitra')
                 ->with([
@@ -82,7 +117,7 @@ class SuratIjinMasukController extends Controller
 
 
         if ($hasil) {
-            return view('Security/daftarNama', compact('hasil','arrayStatusNda'));
+            return view('Security/daftarNama', compact('hasil','arrayStatusNda','content'));
         }
 
         return redirect()->route('get-securityIndexCariPicMitra')
@@ -154,6 +189,17 @@ class SuratIjinMasukController extends Controller
 
     public function detailSurat($id)
     {
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $surat = SuratMasuk::where([
             'id' => $id,
         ])->get()->first();
@@ -223,7 +269,7 @@ class SuratIjinMasukController extends Controller
 
         $tahun = substr($surat->nomorSurat, -4);
         $angka = str_replace($tahun, '', $surat->nomorSurat);
-        return view('Security/detailSurat', compact('surat', 'angka', 'tahun', 'tanggal', 'tanggalMulai', 'tanggalBerakhir', 'arrayK1', 'arrayK2', 'arrayK3', 'arrayL1', 'arrayL2', 'arrayL3'));
+        return view('Security/detailSurat', compact('surat', 'angka', 'tahun', 'tanggal', 'tanggalMulai', 'tanggalBerakhir', 'arrayK1', 'arrayK2', 'arrayK3', 'arrayL1', 'arrayL2', 'arrayL3','content'));
 
     }
 

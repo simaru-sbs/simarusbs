@@ -8,6 +8,7 @@ use App\LogMasuk;
 use App\LokasiKerja;
 use App\BeritaSimaru;
 use App\Petugas;
+use App\SuratKeluarBarang;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,6 +17,14 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+         $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+
         $lokasiKerjas = LokasiKerja::all();
         $pekerjaans = array();
         $idSurats = array();
@@ -78,6 +87,7 @@ class HomeController extends Controller
         ])->get()->count();
 
         $content = [
+            'pesan' =>$pesan,
             'jumlahTamuHariIni' => $hasil,
             'tamuMasukHariIni' => $logMasuk,
             'tamuKeluarHariIni' => $logKeluar,

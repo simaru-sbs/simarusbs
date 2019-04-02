@@ -20,16 +20,63 @@ use Illuminate\Support\Facades\Storage;
 
 class suratijinKeluarbarangcontroller extends Controller
 {
+
+
  public function indexLihatSuratKeluar(Request $request){
 
 
  	  $lokasisurat = LokasiSuratKeluar::all();
  	  $surats = SuratKeluarBarang::all();
+
+ 	  $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=>date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
       
-        return view('Security/lihatSuratKeluar',compact('surats'));
+        return view('Security/lihatSuratKeluar',compact('surats','content'));
+    }
+
+    public function indexLihatSuratKeluarHariIni(Request $request){
+
+
+ 	  $lokasisurat = LokasiSuratKeluar::all();
+ 	  $surats = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=>date('Y-m-d'),
+           
+        ])->get();
+ 	  $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=>date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+      
+        return view('Security/lihatSuratKeluar',compact('surats','content'));
     }
       public function detailSuratKeluar($id)
     {
+    	 $pesan = SuratKeluarBarang::where([
+           'statusSurat'=>0,
+           'tanggal'=> date('Y-m-d'),
+           
+        ])->get()->count();
+
+         $content = [
+            'pesan' => $pesan,
+  
+        ];
+
         $surat = SuratKeluarBarang::where([
             'id' => $id,
         ])->get()->first();
@@ -135,7 +182,7 @@ class suratijinKeluarbarangcontroller extends Controller
         $tanggal = SuratIjinKeluarBarangController::formatTanggalIndo(substr($surat->tanggal,0,10));
         $tahun = substr($surat->nomorSurat, -4);
         $angka = str_replace($tahun, '', $surat->nomorSurat);
-        return view('Security/detailSuratKeluar', compact('surat', 'angka', 'tahun','tanggal', 'arrayL1', 'arrayL2', 'arrayL3','arrayK1', 'arrayK2', 'arrayK3','arrayP1','arrayP2','arrayP3','arrayN1','arrayN2','arrayN3','arrayZ1','arrayZ2','arrayZ3'));
+        return view('Security/detailSuratKeluar', compact('surat', 'angka', 'tahun','tanggal', 'arrayL1', 'arrayL2', 'arrayL3','arrayK1', 'arrayK2', 'arrayK3','arrayP1','arrayP2','arrayP3','arrayN1','arrayN2','arrayN3','arrayZ1','arrayZ2','arrayZ3','content'));
 
     }
 

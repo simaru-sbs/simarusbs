@@ -7,6 +7,7 @@ use App\Nda;
 use Illuminate\Http\Request;
 use App\PicMitra;
 use App\Petugas;
+use App\SUratKeluarBarang;
 use Illuminate\Support\Facades\Storage;
 
 class NdaController extends Controller

@@ -21,10 +21,11 @@
   <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
-              <span class="label label-success"></span>
+              <span class="label label-success">{{$content['pesan']}}</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">Anda memiliki pesan</li>
+              <li class="header">Hari Ini Ada {{$content['pesan']}} Surat Keluar <br>
+              Belum Diverifikasi</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -39,7 +40,7 @@
                 
                 </ul>
               </li>
-              <li class="footer"><a href="">Lihat Semua Pesan</a></li>
+              <li class="footer"><a href="{{route('get-securityIndexLihatSuratKeluarHariIni')}}">Lihat Surat</a></li>
             </ul>
           </li>
                 <li class="dropdown user user-menu">

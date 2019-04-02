@@ -90,7 +90,7 @@
                                 <td>
 
                                      <div class="row" style="padding-bottom: 5px">
-                                        <div class="col-xs-6" style="padding: 0px 9px 0px 10px">
+                                        <div class="col-xs-6" style="padding: 0px 7px 0px 8px">
                                             <a href="{{route('get-securityValidasiSurat',['id' => $surat->id])}}">
                                                 <button type="submit"
                                                         class="btn btn-success pull-right btn-block btn-sm validasi" value="{{$surat->nomorSurat}}"
@@ -99,10 +99,10 @@
                                                 </button>
                                             </a>
                                         </div>
-                                        <div class="col-xs-6" style="padding: 0px 12px 0px 7px">
+                                        <div class="col-xs-6" style="padding: 0px 10px 0px 5px">
                                             <a href="{{route('get-securityRevisiSuratKeluar',['id' => $surat->id])}}')}}">
                                                 <button type="submit"
-                                                        class="btn btn-danger pull-right btn-block btn-sm batal"
+                                                        class="btn btn-danger pull-right btn-block btn-sm hapus"
                                                         value="{{$surat->nomorSurat}}"
                                                         data-toogle="tooltip" data-placement="bottom"  title="Batalkan Surat">
                                                     <i class="fa fa-close"></i>
@@ -111,7 +111,7 @@
                                         </div>
                             
                         
-                                     <div class="col-xs-11" style="padding: 4px 6px 0px 10px">
+                                     <div class="col-xs-12" style="padding: 4px 7px 0px 8px">
                                         <a href="{{route('get-securityDetailSuratKeluar',['id' => $surat->id])}}">
                                             <button type="submit"
                                                     class="btn btn-info pull-right btn-block btn-sm"
