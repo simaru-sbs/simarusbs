@@ -50,18 +50,18 @@ class SuratKeluarBarangController extends Controller
 
 
         if (!$surat) {
-            return redirect()->route('get-picTelkomIndexLihatSuratKeluar')
+            return redirect()->route('get-picTelkomindexLihatSuratKeluar')
                 ->with([
                     'status' => 'warning',
                     'message' => 'Tidak ada SIMARU dengan ID tersebut!'
                 ]);
         }
 
-        if ($surat->validate == 1){
-            return redirect()->route('get-picTelkomIndexLihatSuratKeluar')
+        if ($surat->statusSurat == 1){
+            return redirect()->route('get-picTelkomindexLihatSuratKeluar')
                 ->with([
                     'status' => 'warning',
-                    'message' => 'SIMARU yang sudah divalidasi oleh Supervalidator tidak bisa dirubah!'
+                    'message' => 'SIMARU yang sudah divalidasi oleh Security tidak bisa dirubah!'
                 ]);
         }
 
@@ -274,18 +274,18 @@ class SuratKeluarBarangController extends Controller
 
 
         if (!$surat) {
-            return redirect()->route('get-picTelkomIndexLihatSuratKeluar')
+            return redirect()->route('get-picTelkomindexLihatSuratKeluar')
                 ->with([
                     'status' => 'warning',
                     'message' => 'Tidak ada SIMARU dengan ID tersebut!'
                 ]);
         }
 
-        if ($surat->validate == 1){
-            return redirect()->route('get-picTelkomIndexLihatSuratKeluar')
+        if ($surat->statusSurat == 1){
+            return redirect()->route('get-picTelkomindexLihatSuratKeluar')
                 ->with([
                     'status' => 'warning',
-                    'message' => 'SIMARU yang sudah divalidasi oleh Supervalidator tidak bisa dirubah!'
+                    'message' => 'SIMARU yang sudah divalidasi oleh Security tidak bisa dirubah!'
                 ]);
         }
 
@@ -372,7 +372,7 @@ class SuratKeluarBarangController extends Controller
         ])->get()->first();
 
         if (!$surat) {
-            return redirect()->route('get-indexLihatSuratKeluar')
+            return redirect()->route('get-picTelkomindexLihatSuratKeluar')
                 ->with([
                     'status' => 'warning',
                     'message' => 'Tidak terdapat surat dengan ID tersebut!'
@@ -485,7 +485,7 @@ class SuratKeluarBarangController extends Controller
         ])->get()->first();
 
         if (!$surat) {
-            return redirect()->route('get-indexLihatSuratKeluar')
+            return redirect()->route('get-picTelkomindexLihatSuratKeluar')
                 ->with([
                     'status' => 'warning',
                     'message' => 'Tidak terdapat surat dengan ID tersebut!'

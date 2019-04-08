@@ -77,10 +77,10 @@
                                     @if($surat->statusSurat == 0)
                                         Belum Tervalidasi.
                                     @elseif($surat->statusSurat == 1)
-                                        Validasi Tahap 1.
+                                        Tervalidasi
                                     @elseif($surat->statusSurat == 2)
-                                        Tervalidasi.
-                                    @elseif($surat->statusSurat == 4)
+                                        Revisi
+                                    @elseif($surat->statusSurat == 3)
                                         Non-Aktif.
                                     @else
                                    
@@ -103,7 +103,8 @@
                                         <div class="col-xs-6" style="padding: 0px 12px 0px 7px">
                                             <a href="{{route('get-picTelkomeditSuratKeluar',['id' => $surat->id])}}">
                                                 <button type="submit"
-                                                        class="btn btn-warning pull-right btn-block btn-sm"
+                                                        class="btn btn-warning pull-right btn-block btn-sm edit"
+                                                        value="{{$surat->nomorSurat}}"
                                                         data-toogle="tooltip" data-placement="bottom"  title="Edit Surat">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
@@ -140,8 +141,8 @@
     <script>
         $(function () {
 
-            $('.hapus').on('click', function () {
-                return confirm('Batalkan validasi ' + $(this).val() + '?')
+            $('.edit').on('click', function () {
+                return confirm('Edit Surat ' + $(this).val() + '?')
             });
 
             $('.validasi').on('click', function () {

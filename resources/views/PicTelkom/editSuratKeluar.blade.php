@@ -200,8 +200,18 @@
                                         <?php $ketemu = false?>
                                     @endforeach
                                 @else
-                                    @foreach($picTelkoms as $picTelkom)
-                                        <option value="{{$picTelkom->id}}">{{$picTelkom->nama}}</option>
+                                     @foreach($picTelkoms as $picTelkom)
+                                       @foreach($surat->waspangSuratKeluar as $pic)
+                                            @if($pic->idPicTelkom == $picTelkom->id)
+                                                <option value="{{$picTelkom->id}}" selected>{{$picTelkom->nama}}</option>
+                                                <?php $ketemu = true?>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if(!$ketemu)
+                                            <option value="{{$picTelkom->id}}">{{$picTelkom->nama}}</option>
+                                        @endif
+                                        <?php $ketemu = false?>
                                     @endforeach
                                 @endif
                             </select>
@@ -376,11 +386,11 @@
     <script src="{{url('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
     <script>
+           
+        $(function () {
 
 
-
-         $(function () {
-            $('#lamp').hide();
+           $('#lamp').hide();
 
             $("#lampiranSelect").prop("selectedIndex", 0);
 
@@ -393,8 +403,6 @@
                     $('#lamp').show('slow');
                 }
             });
-
-        $(function () {
 
             var temp = 0;
 

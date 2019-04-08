@@ -15,7 +15,6 @@ class SuratKeluarBarang extends Model
         'perusahaan',
         'jabatan',
         'perihal',
-     
         'statusSurat',
         'keterangan',
         'tanggal',

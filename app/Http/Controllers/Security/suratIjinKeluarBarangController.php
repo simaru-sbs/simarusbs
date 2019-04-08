@@ -25,8 +25,16 @@ class suratijinKeluarbarangcontroller extends Controller
  public function indexLihatSuratKeluar(Request $request){
 
 
- 	  $lokasisurat = LokasiSuratKeluar::all();
- 	  $surats = SuratKeluarBarang::all();
+ 	 $lokasiSurats = LokasiSuratKeluar::all();
+      $surats = array();
+
+
+      foreach ($lokasiSurats as $lokasiSurat) {
+            if ($lokasiSurat->idLokasi == auth('user')->user()->idLokasi) {
+                array_push($surats, $lokasiSurat->suratKeluar);
+            }
+        }
+ 
 
  	  $pesan = SuratKeluarBarang::where([
            'statusSurat'=>0,

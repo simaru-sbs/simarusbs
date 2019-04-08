@@ -30,8 +30,9 @@
                     ])}}"><a href="{{route('get-picTelkomIndexLihatSurat')}}"><i class="glyphicon glyphicon-th-list"></i> Lihat SIMARU</a></li>
                 </ul>
             </li>
+
             <li class="{{areActiveRoutes([
-            'get-picTelkomIndexLihatSurat','get-picTelkomDetailSurat'
+            'get-picTelkomIndexLihatSuratKeluar','get-picTelkomDetailSuratKeluar'
             ])}} treeview">
                 <a href="#">
                     <i class="glyphicon glyphicon-envelope"></i> <span>Surat Keluar Barang</span>
